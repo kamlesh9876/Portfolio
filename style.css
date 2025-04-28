@@ -1,0 +1,270 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    color: #fff;
+}
+
+/* Smooth fluid animation */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+header {
+    padding: 50px 0;
+}
+
+.typewriter h1 {
+    font-family: 'Fira Code', monospace;
+    font-size: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #ffffff;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: white;
+    }
+}
+
+.profile-info {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #2575fc;
+}
+
+.name {
+    font-size: 2rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-top: 5px;
+}
+
+.header-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn,
+.btn-outline {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn {
+    background: #2575fc;
+    color: white;
+    border: none;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #2575fc;
+    color: #2575fc;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.skills-list,
+.projects-grid,
+.tech-icons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill {
+    flex: 1 1 300px;
+}
+
+.progress-bar {
+    background: #1e293b;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    background: #2575fc;
+    height: 100%;
+}
+
+.project-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 300px;
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #2575fc;
+}
+
+.tech-icons {
+    font-size: 48px;
+}
+
+.tech-icon {
+    transition: 0.3s;
+}
+
+.tech-icon:hover {
+    color: #2575fc;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    background: #1e293b;
+}
+
+footer .social-links {
+    margin-bottom: 10px;
+}
+
+footer .social-links a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #2575fc;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#scrollTopBtn:hover {
+    background: #1d4ed8;
+}
+
+.light-theme {
+    background: #548ec8;
+    color: #0f172a;
+}
+
+.light-theme header,
+.light-theme footer {
+    background: #71a1de;
+}
+
+.light-theme .btn-outline {
+    color: #020203;
+    border-color: #0f172a;
+}
+
+.light-theme .btn-outline:hover {
+    background: #0f172a;
+    color: rgb(241, 241, 241);
+}
+
+.light-theme .progress-bar {
+    background: #0c0f12;
+}
+
+.light-theme .progress {
+    background: #fbfbfb;
+}
+
+.light-theme .project-card {
+    background: #f0eded;
+}
+
+.light-theme #scrollTopBtn {
+    background: #0f172a;
+}
+
+.section,
+header,
+footer {
+    background: transparent;
+}
+
+.show-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease-out;
+}
+
+#scrollTopBtn {
+    display: none;
+}
