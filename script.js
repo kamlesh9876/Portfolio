@@ -49,3 +49,19 @@ window.addEventListener('scroll', () => {
         scrollTopBtn.style.display = 'none';
     }
 });
+// Animate Bitmoji when Section is visible
+const bitmojis = document.querySelectorAll('.bitmoji');
+
+const bitmojiObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show-bitmoji');
+        }
+    });
+}, {
+    threshold: 0.3
+});
+
+bitmojis.forEach(bitmoji => {
+    bitmojiObserver.observe(bitmoji);
+});

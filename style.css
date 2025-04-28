@@ -163,7 +163,7 @@ header {
 
 .project-card a {
     display: inline-block;
-    margin-top: 10px;
+    margin-left: 60px;
     color: #2575fc;
 }
 
@@ -257,6 +257,7 @@ footer p {
 header,
 footer {
     background: transparent;
+    align-content: flex-end;
 }
 
 .show-section {
@@ -267,4 +268,18 @@ footer {
 
 #scrollTopBtn {
     display: none;
+}
+
+.bitmoji {
+    align-items: unset;
+    margin-right: 90px;
+    width: 300px;
+    height: auto;
+}
+
+.bitmoji1 {
+    align-items: unset;
+    width: 300px;
+    height: auto;
+
 }
