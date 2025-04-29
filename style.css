@@ -41,6 +41,7 @@ body {
 
 header {
     padding: 50px 0;
+    text-align: center;
 }
 
 .typewriter h1 {
@@ -77,6 +78,8 @@ header {
 .profile-info {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 20px;
 }
@@ -86,10 +89,17 @@ header {
     height: 120px;
     border-radius: 50%;
     border: 3px solid #2575fc;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
 }
 
 .name {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
@@ -101,6 +111,8 @@ header {
 .header-buttons {
     margin-top: 15px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -111,6 +123,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn {
@@ -119,14 +132,25 @@ header {
     border: none;
 }
 
+.btn:hover {
+    background: #1d4ed8;
+}
+
 .btn-outline {
     background: transparent;
     border: 2px solid #2575fc;
     color: #2575fc;
 }
 
+.btn-outline:hover {
+    background: #2575fc;
+    color: white;
+}
+
 .section {
     padding: 60px 0;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .skills-list,
@@ -135,30 +159,58 @@ header {
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
+    gap: 70px;
 }
 
 .skill {
     flex: 1 1 300px;
+    min-width: 250px;
 }
 
+/* Progress bar track */
 .progress-bar {
-    background: #1e293b;
-    height: 10px;
-    border-radius: 5px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 20px;
+    margin-top: 5px;
     overflow: hidden;
+    border: 1px solid #000;
+    /* optional for definition */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    /* optional for depth */
 }
 
+
+/* Progress bar fill */
 .progress {
-    background: #2575fc;
     height: 100%;
+    background-color: #318592;
+    /* Green fill color */
+    border-radius: 8px 0 0 8px;
+    transition: width 0.4s ease;
+}
+
+body.light-theme .progress-bar {
+    background-color: #e0e0e0;
+}
+
+body.light-theme .progress {
+    background-color: #1e40af;
+    /* Choose a strong contrasting color */
 }
 
 .project-card {
-    background: #1e293b;
+    background: rgb(123, 153, 201);
     padding: 20px;
     border-radius: 10px;
     flex: 1 1 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .project-card a {
@@ -211,6 +263,9 @@ footer p {
     border-radius: 50%;
     font-size: 2rem;
     cursor: pointer;
+    display: none;
+    z-index: 1000;
+    transition: background 0.3s;
 }
 
 #scrollTopBtn:hover {
@@ -266,20 +321,141 @@ footer {
     transition: all 0.6s ease-out;
 }
 
-#scrollTopBtn {
-    display: none;
+/* General Bitmoji Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
-.bitmoji {
-    align-items: unset;
-    margin-right: 90px;
-    width: 300px;
+/* Shared styles */
+.bitmoji,
+.bitmoji1,
+.bitmoji2,
+.bitmoji3 {
+    position: absolute;
+    width: 350px;
     height: auto;
+    opacity: 0.6;
+    pointer-events: none;
+    animation: float 10s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Different positions */
+.bitmoji {
+    top: 100px;
+    left: 5px;
 }
 
 .bitmoji1 {
-    align-items: unset;
-    width: 300px;
-    height: auto;
+    bottom: 10px;
+    right: 50px;
+}
 
+.bitmoji2 {
+    top: 630px;
+    right: 70px;
+}
+
+.bitmoji3 {
+    bottom: 120px;
+    left: 2px;
+}
+
+/* Core tracker styles */
+.cursor-tracker {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at 30% 30%, #f1c40f, #e74c3c);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, background 0.4s ease;
+    z-index: 9999;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    mix-blend-mode: difference;
+    animation: idlePulse 3s infinite ease-in-out;
+}
+
+/* Shape modifiers */
+.cursor-tracker.circle {
+    border-radius: 50%;
+}
+
+.cursor-tracker.square {
+    border-radius: 6px;
+}
+
+.cursor-tracker.triangle {
+    width: 0;
+    height: 0;
+    background: none;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 28px solid #2ecc71;
+    animation: trianglePulse 2s infinite;
+}
+
+/* Hover effect for interactivity */
+.cursor-tracker:hover {
+    transform: scale(1.3) translate(-50%, -50%);
+    filter: brightness(1.3);
+    box-shadow: 0 0 20px #f39c12, 0 0 30px #c0392b;
+}
+
+/* Nearby element proximity effect */
+.cursor-tracker.near-element {
+    box-shadow: 0 0 18px #f1c40f, 0 0 24px #e74c3c, 0 0 35px rgba(255, 255, 255, 0.4);
+    animation: pulseGlow 1.5s infinite ease-in-out;
+}
+
+/* Idle pulsing animation */
+@keyframes idlePulse {
+
+    0%,
+    100% {
+        transform: scale(1) translate(-50%, -50%);
+    }
+
+    50% {
+        transform: scale(1.15) translate(-50%, -50%);
+    }
+}
+
+/* Glowing pulse animation when near elements */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 10px #f1c40f, 0 0 18px #e74c3c;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #f1c40f, 0 0 30px #e74c3c;
+    }
+
+    100% {
+        box-shadow: 0 0 10px #f1c40f, 0 0 18px #e74c3c;
+    }
+}
+
+/* Subtle bounce animation for triangle shape */
+@keyframes trianglePulse {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
 }
