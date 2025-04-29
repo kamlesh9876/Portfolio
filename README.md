@@ -85,6 +85,9 @@ This portfolio is designed to give you a peek into my skills and projects. Here'
 - **Scroll to Top**: Need to go back up? Click the Scroll to Top button to instantly return to the top of the page.
 
 ---
+## 🌐 Portfolio
+
+🔗 [kamlesh-pawar.netlify.app](https://kamlesh-pawar.netlify.app) — Explore my work, skills, and projects!
 
 ## 🤝 Contributing
 
