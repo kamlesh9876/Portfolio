@@ -1,111 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamlesh Pawar | Developer Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fira+Code&display=swap"
-        rel="stylesheet">
+    <meta name="description" content="Kamlesh Pawar - Full Stack Developer Portfolio">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Kamlesh Pawar | Full Stack Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="full stack developer, web developer, software engineer, portfolio">
+    <meta name="author" content="Kamlesh Pawar">
+    <meta property="og:title" content="Kamlesh Pawar | Full Stack Developer">
+    <meta property="og:description" content="Full Stack Developer specializing in modern web technologies">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/pfp.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png" onerror="this.onerror=null;this.src='images/favicon.png';">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" onerror="this.onerror=null;this.src='images/apple-touch-icon.png';">
+    
+    <!-- Preconnect to important resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="images/pfp.png" as="image">
+    
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --background-color: #1a1a2e;
+            --text-color: #ffffff;
+            --text-secondary: #ffffff;
+            --text-muted: #ffffff;
+            --text-opacity-90: rgba(255, 255, 255, 0.9);
+            --text-opacity-80: rgba(255, 255, 255, 0.8);
+            --text-opacity-70: rgba(255, 255, 255, 0.7);
+            --text-opacity-60: rgba(255, 255, 255, 0.6);
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 
+    <!-- External Resources -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader"></div>
+    </div>
 
-    <!-- Header Section -->
-    <header>
-        <div class="container header-container">
-            <div class="typewriter">
-                <h1 id="typing-text"></h1>
+    <!-- Main Content -->
+    <div id="main-content" class="main-content hidden">
+        <!-- Header Section -->
+    <header role="banner" class="header">
+        <nav class="nav-container" aria-label="Main Navigation">
+            <div class="logo" aria-label="Kamlesh Pawar Portfolio">
+                <span class="visually-hidden">Kamlesh Pawar Portfolio</span>
+                KP
             </div>
-            <div class="profile-info">
-                <img src="images/pfp.png" alt="Kamlesh Pawar" class="profile-pic">
-                <div>
-                    <h2 class="name">Kamlesh Pawar</h2>
-                    <p class="subtitle">A Developer Who Loves Solving Problems</p>
-                    <div class="header-buttons">
-                        <a href="Kamlesh_Pawar_Resume.pdf" download class="btn">Download Resume</a>
-                        <button id="toggle-theme" class="btn-outline">Toggle Theme</button>
+            <div class="nav-links" role="navigation">
+                <a href="#home" class="active" aria-current="page">Home</a>
+                <a href="#about" aria-label="About Kamlesh Pawar">About</a>
+                <a href="#skills" aria-label="Technical Skills">Skills</a>
+                <a href="#projects" aria-label="Projects Portfolio">Projects</a>
+                <a href="#tech-stack" aria-label="Technology Stack">Tech Stack</a>
+                <a href="#contact" aria-label="Contact Information">Contact</a>
+            </div>
+            <button class="mobile-menu" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="material-icons">menu</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="typewriter">
+                    <h1 id="typing-text" class="hero-text"></h1>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-card glass-card hover-lift">
+                        <img src="images/pfp.png" alt="Kamlesh Pawar" class="profile-pic" loading="eager" decoding="async">
+                        <div class="profile-details">
+                            <h2 class="name gradient-text">Kamlesh Pawar</h2>
+                            <p class="subtitle">Software Developer | Full-Stack Engineer | Computer Science Student</p>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Lohegaon, Pune, Maharashtra</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+91-9860369418</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>kamleshsharadpawar@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="social-links">
+                                <a href="https://linkedin.com/in/kamlesh-pawar" target="_blank" class="social-icon" title="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/kamleshpawar" target="_blank" class="social-icon" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                            <div class="header-buttons">
+                                <a href="Kamlesh_Pawar_Resume.pdf" download class="btn primary-btn">
+                                    <i class="fas fa-download"></i> Download Resume
+                                </a>
+                                <a href="#contact" class="btn secondary-btn">
+                                    <i class="fas fa-envelope"></i> Contact Me
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- About Me Section -->
     <section id="about" class="section">
-        <img src="images/About.png" alt="Bitmoji" class="bitmoji">
         <div class="container">
-            <div class="project-card">
+            <div class="section-header">
                 <h2>About Me</h2>
-                <p>Hello! I'm Kamlesh, a passionate developer driven by the desire to solve real-world problems through
-                    innovative code. I have hands-on experience across Android development, Python scripting, and
-                    full-stack
-                    web technologies, allowing me to craft applications that are fast, scalable, intuitive, and
-                    user-focused.
+                <p class="section-subtitle">Professional Summary</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Versatile Software Developer with a strong foundation in full-stack development, OOP, and scalable system design. Experienced in building responsive web, mobile, and desktop apps using modern frameworks and clean architecture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    My current journey involves deepening my expertise in backend development, particularly by working
-                    with
-                    modern frameworks like Flask and cloud-based databases like Firebase. I constantly explore better
-                    architectural practices and aim to build systems that are both reliable and future-ready.
-
-                    Beyond coding, I am a strong believer in continuous learning and adaptability. I regularly explore
-                    new
-                    tech trends, tools, and frameworks to stay at the cutting edge of the industry. I enjoy optimizing
-                    workflows, refactoring code for performance, and designing efficient solutions that make an impact.
-
-                    Whether it's building a small utility tool or architecting a full-fledged web application, I
-                    approach
-                    every project with a mindset of precision, creativity, and purpose.
-
-                    My long-term vision is to transform creative ideas into digital products that not only function
-                    beautifully but also genuinely improve people's lives. I'm excited about the endless possibilities
-                    technology offers — and I'm committed to growing every day as a developer, a problem-solver, and a
-                    lifelong learner.
-                </p>
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p class="section-subtitle">Academic Journey</p>
+            </div>
+            <div class="education-content">
+                <div class="education-item">
+                    <h3>B. Tech in Computer Science Engineering</h3>
+                    <p class="education-details">
+                        <span class="institution">Ajeenkya DY Patil University, Pune</span>
+                        <span class="period">Expected 2026</span>
+                    </p>
+                    <ul class="education-stats">
+                        <li>Current SGPA: 8.85 / 10.0</li>
+                        <li>Cumulative CGPA: 7.22 / 10.0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+                        <div class="achievement">
+                            <span class="achievement-number">5+</span>
+                            <span class="achievement-label">Years of Experience</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-number">20+</span>
+                            <span class="achievement-label">Projects Completed</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-number">3+</span>
+                            <span class="achievement-label">Technologies Mastered</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/About.png" alt="Bitmoji" class="bitmoji">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="section">
-        <img src="images/Skill.png" alt="Bitmoji" class="bitmoji1">
-
         <div class="container">
-            <h2>Skills</h2>
-            <p>Here are some technologies and tools I'm proficient in. I focus on writing clean, maintainable, and
-                efficient code while constantly expanding my tech stack.</p>
-            <div class="skills-list">
-                <div class="skill">
-                    <span>HTML</span>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p class="section-subtitle">My Technical Expertise</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>Kotlin</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
                 </div>
-                <div class="skill">
-                    <span>CSS</span>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
-                    </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <ul>
+                        <li>React.js</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>Firebase</li>
+                    </ul>
                 </div>
-                <div class="skill">
-                    <span>JavaScript</span>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%"></div>
-                    </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>VS Code</li>
+                        <li>Android Studio</li>
+                        <li>Figma</li>
+                        <li>Postman</li>
+                    </ul>
                 </div>
-                <div class="skill">
-                    <span>Python</span>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 80%"></div>
-                    </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li>MongoDB</li>
+                        <li>Firestore</li>
+                        <li>MySQL</li>
+                        <li>SQLite</li>
+                    </ul>
                 </div>
-                <div class="skill">
-                    <span>Flask</span>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 70%"></div>
+                <div class="skill-category">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li>DSA</li>
+                        <li>OOP</li>
+                        <li>REST API Development</li>
+                        <li>Software Architecture</li>
+                        <li>Socket Programming</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Other</h3>
+                    <ul>
+                        <li>UI/UX Design</li>
+                        <li>Agile Development</li>
+                        <li>Azure (Basics)</li>
+                        <li>DevOps Fundamentals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="section">
+                    <div class="skill-category">
+                        <h3>Frontend Development</h3>
+                        <div class="skill-grid">
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4>HTML5</h4>
+                                    <span class="skill-level">Expert</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-css3-alt"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4>CSS3</h4>
+                                    <span class="skill-level">Advanced</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="skill-details">
+                                    <h4>JavaScript</h4>
+                                    <span class="skill-level">Advanced</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="skill-category">
+                        <h3>Backend Development</h3>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-details">
+                                <h4>Python</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 80%"></div>
+                                </div>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="skill-details">
+                                <h4>Node.js</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 70%"></div>
+                                </div>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frameworks -->
+                    <div class="skill-category">
+                        <h3>Frameworks & Libraries</h3>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="skill-details">
+                                <h4>React</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 70%"></div>
+                                </div>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-angular"></i>
+                            </div>
+                            <div class="skill-details">
+                                <h4>Angular</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 60%"></div>
+                                </div>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Technologies -->
+                    <div class="skill-category">
+                        <h3>Tools & Technologies</h3>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-git"></i>
+                            </div>
+                            <div class="skill-details">
+                                <h4>Git</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%"></div>
+                                </div>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <div class="skill-details">
+                                <h4>Docker</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 70%"></div>
+                                </div>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -114,72 +432,149 @@
 
     <!-- Projects Section -->
     <section id="projects" class="section">
-        <img src="images/project.png" alt="Bitmoji" class="bitmoji2">
         <div class="container">
-            <h2>Projects</h2>
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p class="section-subtitle">Showcasing my technical journey and creative solutions</p>
+            </div>
             <div class="projects-grid">
+                <!-- CodeClinic Project -->
                 <div class="project-card">
-                    <h3>GigFloww</h3>
-                    <p>GigFloww is a freelance marketplace web application built with Flask. It features real-time
-                        interactive UI elements like mouse tracking and sparkle effects to create an engaging user
-                        experience. It connects freelancers with potential clients and streamlines project management
-                        seamlessly.</p>
-                    <a href="https://github.com/kamlesh9876/Gig" target="_blank">View on GitHub</a>
+                    <img src="images/Codeclinc.png
+                    
+                    " alt="CodeClinic - Real-Time Code Collaboration Platform" class="project-image" onerror="this.onerror=null;this.src='images/codeclinic.png';">
+                    <div class="project-content">
+                        <h3>CodeClinic - Real-Time Code Collaboration Platform</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">WebSockets</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <p>Developed a real-time code collaboration platform that enables developers to work together seamlessly on code projects.</p>
+                        <ul>
+                            <li>Real-time code synchronization using WebSockets</li>
+                            <li>Live chat and discussion capabilities</li>
+                            <li>Version control integration</li>
+                            <li>Code highlighting and syntax support</li>
+                        </ul>
+                        <a href="https://github.com/kamlesh9876/CodeClinic" target="_blank" class="project-link">View on GitHub</a>
+                    </div>
                 </div>
+
+                <!-- W-People Project -->
                 <div class="project-card">
-                    <h3>Code Explainer for Beginners</h3>
-                    <p>An educational Python tool designed to break down complex code into simple explanations. By
-                        combining syntax parsing and AI models, it helps beginners understand programming concepts more
-                        intuitively and learn at their own pace.</p>
-                    <a href="https://github.com/kamlesh9876/code-explainer" target="_blank">View on GitHub</a>
+                    <img src="images/W.png" alt="W-People - Real-Time Android Chat Application" class="project-image">
+                    <div class="project-content">
+                        <h3>W-People - Real-Time Android Chat Application</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Kotlin</span>
+                            <span class="tech-tag">Firebase Firestore</span>
+                            <span class="tech-tag">Material Design</span>
+                            <span class="tech-tag">MVVM</span>
+                        </div>
+                        <p>Created a modern Android chat application with real-time messaging capabilities.</p>
+                        <ul>
+                            <li>Real-time messaging with offline support</li>
+                            <li>Push notifications</li>
+                            <li>User authentication and profiles</li>
+                            <li>Media sharing capabilities</li>
+                        </ul>
+                        <a href="https://github.com/kamlesh9876/W-People" target="_blank" class="project-link">View on GitHub</a>
+                    </div>
                 </div>
+
+                <!-- Sentiment Analyzer Project -->
                 <div class="project-card">
-                    <h3>w-people</h3>
-                    <p>w-people is a social networking platform aimed at connecting individuals based on shared skills
-                        and interests. Currently under development, it focuses on building meaningful professional and
-                        personal communities through intelligent matchmaking algorithms and user-friendly design.</p>
-                    <a href="https://github.com/kamlesh9876/W-people-" target="_blank">View on GitHub</a>
+                    <img src="images/sentiment.png" alt="Sentiment Analyzer - NLP-Powered Text Classifier" class="project-image">
+                    <div class="project-content">
+                        <h3>Sentiment Analyzer - NLP-Powered Text Classifier</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TextBlob</span>
+                            <span class="tech-tag">Tkinter</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                        <p>Built a desktop application for analyzing text sentiment using natural language processing.</p>
+                        <ul>
+                            <li>Real-time text sentiment analysis</li>
+                            <li>Batch processing capability</li>
+                            <li>Visual sentiment charts</li>
+                            <li>Export analysis results</li>
+                        </ul>
+                        <a href="https://github.com/kamlesh9876/Sentiment-Analyzer" target="_blank" class="project-link">View on GitHub</a>
+                    </div>
                 </div>
+
+                <!-- 2D Adventure Game Project -->
                 <div class="project-card">
-                    <h3>Space Run 2.0</h3>
-                    <p>Space Run 2.0 is an exciting 2D space adventure game built using Python and the pygame library.
-                        In this game, players navigate a spacecraft through a field of randomly generated obstacles,
-                        collect power-ups, and aim for the highest score. The game features smooth controls, increasing
-                        difficulty, and a retro-inspired visual style.</p>
-                    <a href="https://github.com/kamlesh9876/Sapce-Run-2.0" target="_blank">View on GitHub</a>
+                    <img src="images/hellgame.png" alt="2D Adventure Game" class="project-image" onerror="this.onerror=null;this.src='images/hellgame.png';">
+                    <div class="project-content">
+                        <h3>2D Adventure Game</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5 Canvas</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Game Development</span>
+                        </div>
+                        <p>Developed a 2D platformer game with engaging gameplay mechanics and smooth animations.</p>
+                        <ul>
+                            <li>Multiple levels with increasing difficulty</li>
+                            <li>Physics-based movement and interactions</li>
+                            <li>Responsive game controls</li>
+                            <li>Score tracking and achievements</li>
+                        </ul>
+                        <a href="https://github.com/kamlesh9876/HELL-GAME--WEB-GAME-" target="_blank" class="project-link">View on GitHub</a>
+                    </div>
                 </div>
+
+                <!-- Editoria Project -->
                 <div class="project-card">
-                    <h3>Flight Booking System</h3>
-                    <p>This is a GUI-based flight booking system built in Python using Tkinter. The system allows users
-                        to book flight tickets, cancel tickets, view all bookings, and generate e-ticket PDFs with QR
-                        codes. It also simulates payment and includes a dynamic seat map showing live seat availability.
-                        The backend is powered by MySQL to manage bookings and store flight information.</p>
-                    <a href="https://github.com/kamlesh9876/flight-booking-system" target="_blank">View on GitHub</a>
+                    <img src="images/editoria.png" alt="Editoria - Web-based Image Editor" class="project-image">
+                    <div class="project-content">
+                        <h3>Editoria - Web-based Image Editor</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5 Canvas</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Image Processing</span>
+                        </div>
+                        <p>Built a powerful web-based image editor with advanced editing capabilities.</p>
+                        <ul>
+                            <li>Multiple image filters and effects</li>
+                            <li>Canvas drawing and erasing tools</li>
+                            <li>Image cropping and resizing</li>
+                            <li>Direct image download</li>
+                        </ul>
+                        <a href="https://github.com/kamlesh9876/Editoria" target="_blank" class="project-link">View on GitHub</a>
+                    </div>
                 </div>
+
+                <!-- Space Run Project -->
                 <div class="project-card">
-                    <h3>Hell Game</h3>
-                    <p>2D Adventure Game Overview This is a 2D adventure game developed using HTML, CSS, and JavaScript.
-                        The game features a platformer-style environment with a character navigating through levels,
-                        avoiding obstacles, and reaching the exit within a time limit</p>
-                    <a href="https://github.com/kamlesh9876/HELL-GAME--WEB-GAME-" target="_blank">View on GitHub</a>
-                </div>
-                <div class="project-card">
-                    <h3>Editoria</h3>
-                    <p>Editoria is a web-based image editor built using HTML, CSS, and JavaScript. This tool allows
-                        users to apply various image filters, draw or erase on the canvas, crop images, and more. Once
-                        the desired edits are made, the image can be downloaded directly from the editor.</p>
-                    <a href="https://github.com/kamlesh9876/Editoria" target="_blank">View on GitHub</a>
-                </div>
-                <div class="project-card">
-                    <h3>Space Run 1 </h3>
-                    <p>Space Run 🚀 Welcome to Space Run! In Space Run, you'll embark on an exhilarating journey through
-                        an endless space adventure. Dodge obstacles, collect points, and aim for the highest score as
-                        you navigate through a vibrant, pixelated universe. The further you run, the harder it gets!</p>
-                    <a href="https://github.com/kamlesh9876/Space-run" target="_blank">View on GitHub</a>
+                    <img src="images/spacerun.png" alt="Space Run - Infinite Runner Game" class="project-image">
+                    <div class="project-content">
+                        <h3>Space Run - Infinite Runner Game</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5 Canvas</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Game Development</span>
+                        </div>
+                        <p>Created an exciting space-themed infinite runner game with engaging gameplay.</p>
+                        <ul>
+                            <li>Infinite procedural generation</li>
+                            <li>Score tracking and high scores</li>
+                            <li>Power-ups and collectibles</li>
+                            <li>Dynamic difficulty progression</li>
+                        </ul>
+                        <a href="https://github.com/kamlesh9876/Space-run" target="_blank" class="project-link">View on GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Tech Stack Section -->
     <section id="tech-stack" class="section">
@@ -222,8 +617,9 @@
     <!-- Scroll to Top Button -->
     <button id="scrollTopBtn" title="Go to top">↑</button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://rawgit.com/mrdoob/stats.js/master/build/stats.min.js"></script>
     <script src="script.js"></script>
-
 </body>
 
 </html>
