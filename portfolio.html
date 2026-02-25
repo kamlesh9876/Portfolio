@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <title>Kamlesh Pawar — Software Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,6 +98,20 @@
     }
     .nav-resume:hover { background: var(--accent-hover) !important; }
     .nav-resume::after { display: none !important; }
+
+    /* Mobile Menu Toggle */
+    .nav-menu-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 8px; border-radius: 6px; transition: background 200ms ease;
+    }
+    .nav-menu-toggle:hover { background: var(--bg); }
+    .nav-menu-toggle span {
+      display: block; width: 20px; height: 2px; background: var(--text);
+      margin: 4px 0; transition: all 200ms ease;
+    }
+    .nav-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
 
     /* HERO */
     #hero {
@@ -530,18 +544,121 @@
     #chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
 
     /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      .container { padding: 0 20px; }
+      .hero-grid { gap: 48px; }
+    }
+
+    @media (max-width: 1024px) {
+      /* Tablet Landscape */
+      .container { padding: 0 16px; }
+      .hero-grid { gap: 40px; }
+      .about-grid, .contact-grid { gap: 48px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 900px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      /* Tablet Portrait */
+      .container { padding: 0 16px; }
+      .about-grid, .contact-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+      }
       .process-grid { grid-template-columns: 1fr 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
+      .certs-grid { grid-template-columns: 1fr 1fr; }
+      .hero-grid { gap: 32px; }
     }
-    @media (max-width: 640px) {
-      section { padding: 64px 0; }
-      .skills-grid, .process-grid, .certs-grid { grid-template-columns: 1fr; }
-      .project-card { grid-template-columns: 1fr; }
+
+    @media (max-width: 768px) {
+      /* Small Tablet/Large Mobile */
+      .container { padding: 0 16px; }
+      section { padding: 80px 0; }
+      .hero-grid { 
+        grid-template-columns: 1fr; 
+        gap: 32px; 
+        padding: 40px 0;
+      }
+      .hero-right { display: none; }
+      .hero-left { max-width: 100%; }
+      .hero-name { font-size: clamp(32px, 8vw, 48px); }
+      .hero-role { font-size: clamp(14px, 4vw, 17px); }
+      .section-heading { font-size: clamp(22px, 6vw, 28px); }
+      .project-card { grid-template-columns: 1fr; padding: 20px; }
       .project-number { display: none; }
-      #chat-window { width: calc(100vw - 32px); right: 16px; bottom: 84px; }
-      #chat-toggle { right: 16px; bottom: 16px; }
+      .skills-grid, .process-grid, .certs-grid { grid-template-columns: 1fr; }
+      .panel-stat-row { grid-template-columns: 1fr; gap: 12px; }
+      
+      /* Mobile Menu */
+      .nav-menu-toggle { display: block; }
+      .nav-links {
+        position: fixed; top: 56px; left: 0; right: 0;
+        background: var(--bg-white); border-bottom: 1px solid var(--border);
+        flex-direction: column; padding: 20px; gap: 8px;
+        transform: translateY(-100%); opacity: 0;
+        transition: all 300ms ease; pointer-events: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+      .nav-links.active {
+        transform: translateY(0); opacity: 1; pointer-events: all;
+      }
+      .nav-links a { padding: 12px 16px; font-size: 15px; }
+      .nav-resume { margin-top: 8px; }
+    }
+
+    @media (max-width: 640px) {
+      /* Mobile */
+      .container { padding: 0 12px; }
+      section { padding: 64px 0; }
+      .hero-grid { padding: 32px 0; gap: 24px; }
+      .hero-name { font-size: clamp(28px, 10vw, 42px); }
+      .hero-role { font-size: clamp(13px, 4.5vw, 16px); }
+      .hero-desc { font-size: 14px; margin-bottom: 24px; }
+      .section-heading { font-size: clamp(20px, 7vw, 26px); }
+      .section-sub { font-size: 14px; margin-bottom: 32px; }
+      .project-card { padding: 16px; }
+      .project-title { font-size: 18px; }
+      .project-desc { font-size: 14px; }
+      .skill-group { padding: 16px; }
+      .process-card { padding: 18px 16px; }
+      .cert-card { padding: 14px 16px; }
+      .timeline-bullets li { font-size: 13px; }
+      .about-text p { font-size: 15px; }
+      .contact-left p { font-size: 15px; }
+      .form-input, .form-textarea { font-size: 16px; } /* Prevents zoom on iOS */
+    }
+
+    @media (max-width: 480px) {
+      /* Small Mobile */
+      .container { padding: 0 8px; }
+      section { padding: 48px 0; }
+      .hero-grid { padding: 24px 0; }
+      .hero-actions { gap: 8px; }
+      .btn-primary, .btn-secondary { padding: 8px 16px; font-size: 13px; }
+      .nav-links a { padding: 4px 8px; font-size: 13px; }
+      .nav-resume { padding: 4px 12px !important; font-size: 12px !important; }
+      .project-meta { font-size: 10px; }
+      .tag { font-size: 10px; padding: 1px 6px; }
+      .skill-pill { font-size: 12px; }
+      .chat-messages { padding: 12px; }
+      #chat-window { 
+        width: calc(100vw - 16px); 
+        right: 8px; 
+        bottom: 80px; 
+        max-height: calc(100vh - 120px);
+      }
+      #chat-toggle { right: 8px; bottom: 8px; }
+    }
+
+    @media (max-width: 360px) {
+      /* Very Small Mobile */
+      .hero-name { font-size: clamp(24px, 12vw, 36px); }
+      .section-heading { font-size: clamp(18px, 8vw, 24px); }
+      .project-card { padding: 12px; }
+      .skill-group { padding: 12px; }
+      .process-card { padding: 16px 12px; }
     }
   </style>
 </head>
@@ -551,7 +668,12 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">Kamlesh Pawar</a>
-    <ul class="nav-links">
+    <button class="nav-menu-toggle" id="nav-menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#projects">Work</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -995,13 +1117,38 @@
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
 
+  // ── MOBILE MENU ──
+  const navMenuToggle = document.getElementById('nav-menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  
+  navMenuToggle.addEventListener('click', () => {
+    navMenuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target)) {
+      navMenuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+  });
+
   // ── ACTIVE NAV ──
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-resume)');
+  const navLinksItems = document.querySelectorAll('.nav-links a:not(.nav-resume)');
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
-    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+    navLinksItems.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
   }, { passive: true });
 
   // ── REVEAL ──
