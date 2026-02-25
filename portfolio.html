@@ -52,6 +52,35 @@
       overflow-x: hidden; -webkit-font-smoothing: antialiased;
       opacity: 0; animation: pageFadeIn 0.35s ease forwards;
     }
+
+    /* ✅ Cursor spotlight background */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+
+      /* spotlight is controlled by CSS variables --mx --my */
+      background:
+        radial-gradient(
+          600px circle at var(--mx, 50%) var(--my, 50%),
+          rgba(59,130,246,0.10),
+          transparent 60%
+        );
+      transition: background 60ms linear;
+    }
+
+    /* ✅ Make sure your page content stays above the background */
+    body > *{
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Optional: reduce effect on touch devices */
+    @media (pointer: coarse){
+      body::before{ display:none; }
+    }
     @keyframes pageFadeIn { to { opacity: 1; } }
 
     ::-webkit-scrollbar { width: 6px; }
@@ -1627,6 +1656,24 @@ DO NOT share: personal address, phone number, salary numbers, private company de
   document.getElementById('chat-input').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   });
+
+  // ✅ Cursor spotlight tracking with smooth lerp
+  let tx = 50, ty = 50;   // target
+  let cx = 50, cy = 50;   // current
+
+  window.addEventListener('mousemove', (e) => {
+    tx = (e.clientX / window.innerWidth) * 100;
+    ty = (e.clientY / window.innerHeight) * 100;
+  }, { passive: true });
+
+  function animate(){
+    cx += (tx - cx) * 0.12;
+    cy += (ty - cy) * 0.12;
+    document.documentElement.style.setProperty('--mx', `${cx}%`);
+    document.documentElement.style.setProperty('--my', `${cy}%`);
+    requestAnimationFrame(animate);
+  }
+  animate();
 </script>
 </body>
 </html>
