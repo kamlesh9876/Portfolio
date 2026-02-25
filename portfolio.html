@@ -919,89 +919,353 @@
 
 @media (max-width: 640px) {
       /* Mobile */
-      .container { padding: 0 12px; }
-      .hero-grid { 
-        padding: clamp(8px, 2vw, 16px) 0;
-        gap: clamp(16px, 3vw, 32px);
+      .container { padding: 0 16px; }
+      section { padding: 48px 0; }
+      
+      /* Hero Section Mobile */
+      #hero {
+        min-height: 100vh;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        display: flex;
+        align-items: center;
       }
-      .hero-name { font-size: clamp(24px, 6vw, 32px); }
-      .hero-role { font-size: clamp(13px, 3.5vw, 16px); }
-      .hero-desc { font-size: clamp(12px, 2.5vw, 15px); margin-bottom: 20px; }
-      .section-heading { font-size: clamp(18px, 5vw, 24px); }
-      .section-sub { font-size: clamp(12px, 2.5vw, 14px); margin-bottom: 20px; }
-      .project-card { padding: 16px; }
+      .hero-grid { 
+        padding: 20px 0;
+        gap: 32px;
+        grid-template-columns: 1fr;
+      }
+      .hero-left { 
+        text-align: center;
+        max-width: 100%;
+      }
+      .hero-name { 
+        font-size: clamp(28px, 7vw, 36px);
+        line-height: 1.2;
+        margin-bottom: 12px;
+      }
+      .hero-role { 
+        font-size: clamp(16px, 4vw, 18px);
+        margin-bottom: 20px;
+        line-height: 1.4;
+      }
+      .hero-desc { 
+        font-size: clamp(14px, 3.5vw, 16px);
+        margin-bottom: 28px;
+        line-height: 1.6;
+        max-width: 100%;
+      }
       .hero-actions { 
         flex-direction: column; 
-        gap: 12px;
+        gap: 16px;
         align-items: center;
+        margin-bottom: 24px;
       }
       .btn-primary, .btn-secondary { 
         width: 100%;
-        max-width: 280px;
+        max-width: 320px;
         text-align: center;
-        padding: 12px 20px;
+        padding: 14px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+      }
+      .hero-meta { 
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+      .hero-meta-item {
         font-size: 14px;
       }
-      .nav-links a { padding: 4px 8px; font-size: 13px; }
-      .nav-resume { padding: 4px 12px !important; font-size: 12px !important; }
-      .project-meta { font-size: 10px; }
-      .tag { font-size: 10px; padding: 1px 6px; }
-      .skill-pill { font-size: 12px; }
-      .chat-messages { padding: 12px; }
+      .hero-yutsumi {
+        justify-content: center;
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+      
+      /* Section Headers Mobile */
+      .section-heading { 
+        font-size: clamp(24px, 6vw, 28px);
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      .section-sub { 
+        font-size: clamp(14px, 3.5vw, 16px);
+        margin-bottom: 32px;
+        text-align: center;
+        max-width: 100%;
+      }
+      
+      /* Cards Mobile */
+      .about-card, .project-card, .skill-group {
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .project-number { display: none; }
+      
+      /* Grids Mobile */
+      .about-grid, .contact-grid { 
+        grid-template-columns: 1fr; 
+        gap: 24px; 
+      }
+      .process-grid { 
+        grid-template-columns: 1fr; 
+        gap: 20px;
+      }
+      .skills-grid { 
+        grid-template-columns: 1fr; 
+        gap: 16px;
+      }
+      .certs-grid { 
+        grid-template-columns: 1fr; 
+        gap: 16px;
+      }
+      
+      /* Timeline Mobile */
+      .timeline-container {
+        padding-left: 20px;
+      }
+      .timeline-dot {
+        width: 12px;
+        height: 12px;
+        left: -26px;
+      }
+      .timeline-bullets li {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      
+      /* Contact Mobile */
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .form-input, .form-textarea {
+        font-size: 16px;
+        padding: 12px 16px;
+        border-radius: 8px;
+      }
+      .form-textarea {
+        min-height: 120px;
+      }
+      
+      /* Navigation Mobile */
+      .nav-links {
+        position: fixed; top: 64px; left: 0; right: 0;
+        background: var(--bg-white); border-bottom: 1px solid var(--border);
+        flex-direction: column; padding: 20px; gap: 12px;
+        transform: translateY(-100%); opacity: 0;
+        transition: all 300ms ease; pointer-events: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+      .nav-links.active {
+        transform: translateY(0); opacity: 1; pointer-events: all;
+      }
+      .nav-links a { 
+        padding: 12px 16px; 
+        font-size: 16px;
+        text-align: center;
+      }
+      .nav-resume { 
+        margin-top: 12px;
+        padding: 12px 20px !important; 
+        font-size: 16px !important;
+        text-align: center;
+      }
+      
+      /* Chatbot Mobile */
       #chat-window { 
-        width: calc(100vw - 16px); 
-        right: 8px; 
+        width: calc(100vw - 32px); 
+        right: 16px; 
         bottom: 80px; 
-        max-height: calc(100vh - 120px);
+        max-height: calc(100vh - 140px);
         border-radius: 12px;
       }
       #chat-toggle { 
-        right: 8px; 
-        bottom: 8px;
-        width: 48px;
-        height: 48px;
+        right: 16px; 
+        bottom: 16px;
+        width: 56px;
+        height: 56px;
       }
-      .chat-header { padding: 12px 16px; }
-      .chat-input-container { padding: 12px 16px; }
-      .chat-input { font-size: 16px; }
-      .chat-send { padding: 8px 12px; font-size: 14px; }
+      .chat-header { 
+        padding: 16px 20px;
+        border-radius: 12px 12px 0 0;
+      }
+      .chat-input-container { 
+        padding: 16px 20px;
+        border-radius: 0 0 12px 12px;
+      }
+      .chat-input { 
+        font-size: 16px;
+        padding: 12px 16px;
+        border-radius: 8px;
+      }
+      .chat-send { 
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+      }
       .chat-suggestions { 
-        padding: 12px 16px; 
+        padding: 16px 20px; 
         gap: 8px;
         flex-wrap: wrap;
       }
       .suggestion-chip { 
-        font-size: 12px; 
-        padding: 6px 12px;
+        font-size: 14px; 
+        padding: 8px 16px;
+        border-radius: 20px;
         white-space: nowrap;
+      }
+      .chat-messages { 
+        padding: 16px 20px;
+        max-height: 300px;
+      }
+      .msg {
+        padding: 12px 16px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        line-height: 1.5;
       }
     }
 
     @media (max-width: 480px) {
       /* Small Mobile */
-      .container { padding: 0 8px; }
+      .container { padding: 0 12px; }
+      section { padding: 40px 0; }
+      
+      /* Hero Small Mobile */
+      #hero {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      .hero-grid { 
+        padding: 16px 0;
+        gap: 24px;
+      }
+      .hero-name { 
+        font-size: clamp(24px, 8vw, 32px);
+        line-height: 1.1;
+      }
+      .hero-role { 
+        font-size: clamp(14px, 4.5vw, 16px);
+        margin-bottom: 16px;
+      }
+      .hero-desc { 
+        font-size: clamp(13px, 3.5vw, 15px);
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+      .hero-actions { 
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .btn-primary, .btn-secondary { 
+        max-width: 280px;
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+      .hero-meta-item {
+        font-size: 13px;
+      }
+      .hero-yutsumi {
+        font-size: 13px;
+        padding: 10px;
+      }
+      
+      /* Sections Small Mobile */
+      .section-heading { 
+        font-size: clamp(20px, 6vw, 24px);
+        margin-bottom: 12px;
+      }
+      .section-sub { 
+        font-size: clamp(13px, 3.5vw, 15px);
+        margin-bottom: 24px;
+      }
+      
+      /* Cards Small Mobile */
+      .about-card, .project-card, .skill-group {
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      
+      /* Grids Small Mobile */
+      .about-grid, .contact-grid { gap: 20px; }
+      .process-grid { gap: 16px; }
+      .skills-grid { gap: 12px; }
+      .certs-grid { gap: 12px; }
+      
+      /* Timeline Small Mobile */
+      .timeline-container {
+        padding-left: 16px;
+      }
+      .timeline-dot {
+        width: 10px;
+        height: 10px;
+        left: -23px;
+      }
+      .timeline-bullets li {
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+      
+      /* Chatbot Small Mobile */
       #chat-window { 
-        width: calc(100vw - 16px); 
-        right: 8px; 
-        bottom: 80px; 
+        width: calc(100vw - 24px); 
+        right: 12px; 
+        bottom: 70px; 
         max-height: calc(100vh - 120px);
-        border-radius: 12px;
+        border-radius: 8px;
       }
       #chat-toggle { 
-        right: 8px; 
-        bottom: 8px;
+        right: 12px; 
+        bottom: 12px;
         width: 48px;
         height: 48px;
       }
-      .chat-header { padding: 10px 12px; }
-      .chat-input-container { padding: 10px 12px; }
+      .chat-header { 
+        padding: 12px 16px;
+        border-radius: 8px 8px 0 0;
+      }
+      .chat-input-container { 
+        padding: 12px 16px;
+        border-radius: 0 0 8px 8px;
+      }
+      .chat-input { 
+        font-size: 16px;
+        padding: 10px 14px;
+        border-radius: 6px;
+      }
+      .chat-send { 
+        padding: 10px 16px;
+        font-size: 15px;
+        border-radius: 6px;
+      }
       .chat-suggestions { 
-        padding: 8px 12px; 
+        padding: 12px 16px; 
         gap: 6px;
       }
       .suggestion-chip { 
-        font-size: 11px; 
-        padding: 4px 8px;
+        font-size: 12px; 
+        padding: 6px 12px;
+        border-radius: 16px;
+      }
+      .chat-messages { 
+        padding: 12px 16px;
+        max-height: 250px;
+      }
+      .msg {
+        padding: 10px 14px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 13px;
       }
     }    }
 
