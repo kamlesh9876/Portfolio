@@ -661,6 +661,100 @@
     #chat-send:active { transform: scale(0.94); }
     #chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
 
+    /* ✅ 1) Make anchor jumps land correctly (navbar offset) */
+    html {
+      scroll-padding-top: 80px; /* nav height + breathing room */
+    }
+
+    /* ✅ 2) Better full-screen hero fit */
+    #hero{
+      min-height: calc(100svh - 64px); /* avoids mobile browser URL bar issues */
+      padding-top: 64px;               /* keep this for nav spacing */
+      padding-bottom: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Reduce hero vertical padding so it doesn't exceed viewport */
+    .hero-grid{
+      padding: clamp(24px, 4vw, 56px) 0;
+      gap: clamp(28px, 6vw, 90px);
+    }
+
+    /* ✅ 3) Make hero left content breathe but not overflow */
+    .hero-left{
+      max-width: 620px;
+    }
+    .hero-desc{
+      max-width: 520px;
+    }
+
+    /* ✅ 4) Right panel should never push layout or overflow */
+    .hero-right{
+      align-self: center;
+      max-width: 420px;
+      width: 100%;
+    }
+    .hero-panel{
+      transform: rotate(-1.5deg);
+    }
+
+    /* ✅ 5) Sections scale better on big screens + small screens */
+    section{
+      padding: clamp(56px, 8vw, 96px) 0;
+    }
+
+    /* ✅ 6) Projects layout: remove forced X shifts on smaller widths */
+    @media (max-width: 1100px){
+      .project-card:nth-child(odd),
+      .project-card:nth-child(even){
+        transform: none;
+      }
+    }
+
+    /* ✅ 7) Contact grid spacing tweak for wider screens */
+    .contact-grid,
+    .about-grid{
+      gap: clamp(32px, 6vw, 80px);
+    }
+
+    /* ✅ 8) Chat window: fit small heights and prevent overflow */
+    #chat-window{
+      max-height: min(580px, calc(100svh - 140px));
+    }
+    @media (max-width: 480px){
+      #chat-window{
+        width: calc(100vw - 16px);
+        right: 8px;
+        bottom: 76px;
+        max-height: calc(100svh - 120px);
+      }
+      #chat-toggle{
+        right: 8px;
+        bottom: 8px;
+      }
+    }
+
+    /* ✅ 9) Navbar mobile menu: use correct top offset (nav is 64px) */
+    @media (max-width: 768px){
+      .nav-links{
+        top: 64px; /* was 56px */
+      }
+    }
+
+    /* ✅ 10) Optional: stop horizontal shake due to transforms */
+    body{
+      overflow-x: clip;
+    }
+
+    /* ✅ 11) Optional: Apple-style full-screen premium feel */
+    @media (min-width: 900px){
+      #hero .container{
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 1200px) {
       .container { padding: 0 20px; }
