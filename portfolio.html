@@ -917,26 +917,31 @@
       .section-sub { font-size: clamp(12px, 2.5vw, 14px); margin-bottom: 20px; }
       .project-card { padding: 16px; }
 
-@media (max-width: 480px) {
-  /* Small Mobile */
-  .container { padding: 0 8px; }
-  .hero-grid { padding: 24px 0; }
-  .hero-actions { gap: 8px; }
-  .btn-primary, .btn-secondary { padding: 8px 16px; font-size: 13px; }
-  .nav-links a { padding: 4px 8px; font-size: 13px; }
-  .nav-resume { padding: 4px 12px !important; font-size: 12px !important; }
-  .project-meta { font-size: 10px; }
-  .tag { font-size: 10px; padding: 1px 6px; }
-  .skill-pill { font-size: 12px; }
-  .chat-messages { padding: 12px; }
-  #chat-window { 
-    width: calc(100vw - 16px); 
-    right: 8px; 
-    bottom: 80px; 
-    max-height: calc(100vh - 120px);
-  }
-  #chat-toggle { right: 8px; bottom: 8px; }
-}
+@media (max-width: 640px) {
+      /* Mobile */
+      .container { padding: 0 12px; }
+      .hero-grid { 
+        padding: clamp(8px, 2vw, 16px) 0;
+        gap: clamp(16px, 3vw, 32px);
+      }
+      .hero-name { font-size: clamp(24px, 6vw, 32px); }
+      .hero-role { font-size: clamp(13px, 3.5vw, 16px); }
+      .hero-desc { font-size: clamp(12px, 2.5vw, 15px); margin-bottom: 20px; }
+      .section-heading { font-size: clamp(18px, 5vw, 24px); }
+      .section-sub { font-size: clamp(12px, 2.5vw, 14px); margin-bottom: 20px; }
+      .project-card { padding: 16px; }
+      .hero-actions { 
+        flex-direction: column; 
+        gap: 12px;
+        align-items: center;
+      }
+      .btn-primary, .btn-secondary { 
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 14px;
+      }
       .nav-links a { padding: 4px 8px; font-size: 13px; }
       .nav-resume { padding: 4px 12px !important; font-size: 12px !important; }
       .project-meta { font-size: 10px; }
@@ -948,9 +953,57 @@
         right: 8px; 
         bottom: 80px; 
         max-height: calc(100vh - 120px);
+        border-radius: 12px;
       }
-      #chat-toggle { right: 8px; bottom: 8px; }
+      #chat-toggle { 
+        right: 8px; 
+        bottom: 8px;
+        width: 48px;
+        height: 48px;
+      }
+      .chat-header { padding: 12px 16px; }
+      .chat-input-container { padding: 12px 16px; }
+      .chat-input { font-size: 16px; }
+      .chat-send { padding: 8px 12px; font-size: 14px; }
+      .chat-suggestions { 
+        padding: 12px 16px; 
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .suggestion-chip { 
+        font-size: 12px; 
+        padding: 6px 12px;
+        white-space: nowrap;
+      }
     }
+
+    @media (max-width: 480px) {
+      /* Small Mobile */
+      .container { padding: 0 8px; }
+      #chat-window { 
+        width: calc(100vw - 16px); 
+        right: 8px; 
+        bottom: 80px; 
+        max-height: calc(100vh - 120px);
+        border-radius: 12px;
+      }
+      #chat-toggle { 
+        right: 8px; 
+        bottom: 8px;
+        width: 48px;
+        height: 48px;
+      }
+      .chat-header { padding: 10px 12px; }
+      .chat-input-container { padding: 10px 12px; }
+      .chat-suggestions { 
+        padding: 8px 12px; 
+        gap: 6px;
+      }
+      .suggestion-chip { 
+        font-size: 11px; 
+        padding: 4px 8px;
+      }
+    }    }
 
     @media (max-width: 360px) {
       /* Very Small Mobile */
