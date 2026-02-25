@@ -27,18 +27,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #FFFFFF;
-      --bg-white:     #FFFFFF;
-      --bg-subtle:    #F8FAFC;
-      --text:         #1A1D23;
-      --text-muted:   #6B7280;
-      --text-faint:   #9CA3AF;
-      --accent:       #3B82F6;
-      --accent-hover: #2563EB;
-      --border:       #E5E7EB;
-      --success:      #10B981;
-      --max-w:        1280px;
-      --radius:       12px;
+      --accent: #0F172A;
+      --accent-hover: #1E293B;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --bg: #FAFAFA;
+      --bg-subtle: #F8FAFC;
+      --bg-white: #FFFFFF;
+      --border: #E2E8F0;
+      --max-w: 1400px;
+      --radius: 12px;
       --font-primary: 'Inter', system-ui, sans-serif;
       --font-body:    'Inter', system-ui, sans-serif;
       --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
@@ -53,233 +51,19 @@
       opacity: 0; animation: pageFadeIn 0.35s ease forwards;
     }
 
-    /* ✅ Cursor spotlight background */
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-
-      /* bring it above all section backgrounds */
-      z-index: 999;
-
-      background:
-        radial-gradient(
-          800px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.25),
-          rgba(59,130,246,0.15) 40%,
-          transparent 70%
-        );
-
-      /* smooth transitions */
-      transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* ✅ Additional background layer for depth */
-    body::after{
-      content:"";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 998;
-
-      background:
-        radial-gradient(
-          1200px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.12),
-          transparent 50%
-        );
-
-      animation: backgroundPulse 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    @keyframes backgroundPulse {
-      0%, 100% { 
-        opacity: 0.6; 
-        transform: scale(1);
-      }
-      50% { 
-        opacity: 1; 
-        transform: scale(1.05);
-      }
-    }
-
-    /* ✅ Keep content above spotlight */
-    body > *{
-      position: relative;
-      z-index: 1000;
-    }
-
-    /* ✅ Interactive section backgrounds */
-    section {
-      position: relative;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: 
-        radial-gradient(
-          600px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.08),
-          transparent 40%
-        );
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    section:hover::before {
-      opacity: 1;
-    }
-
-    /* ✅ Hero section special background */
-    #hero::before {
-      content: ''; position: absolute;
-      top: -20%; right: -10%; width: 60%; height: 140%;
-      background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(59,130,246,0.08) 100%);
-      border-radius: 50% 20% 30% 40%;
-      transform: rotate(-15deg);
-      z-index: 0;
-      animation: heroFloat 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    #hero::after {
-      content: ''; position: absolute;
-      top: -10%; left: -15%; width: 50%; height: 120%;
-      background: 
-        radial-gradient(
-          800px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.20),
-          transparent 60%
-        );
-      z-index: 0;
-      animation: heroGlow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
-    }
-
-    @keyframes heroFloat {
-      0%, 100% { 
-        transform: rotate(-15deg) translateY(0) scale(1);
-      }
-      50% { 
-        transform: rotate(-12deg) translateY(-10px) scale(1.02);
-      }
-    }
-
-    @keyframes heroGlow {
-      0% { 
-        opacity: 0.6; 
-        transform: scale(1);
-      }
-      100% { 
-        opacity: 1; 
-        transform: scale(1.1);
-      }
-    }
-
-    /* ✅ Particle background effect */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 997;
-      overflow: hidden;
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .particle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: rgba(59,130,246,0.6);
-      border-radius: 50%;
-      animation: float 25s cubic-bezier(0.4, 0, 0.2, 1) infinite linear;
-      box-shadow: 0 0 10px rgba(59,130,246,0.3);
-      will-change: transform;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg) scale(0);
-        opacity: 0;
-      }
-      5% {
-        transform: translateY(90vh) rotate(36deg) scale(1);
-        opacity: 1;
-      }
-      95% {
-        transform: translateY(10vh) rotate(684deg) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(0vh) rotate(720deg) scale(0);
-        opacity: 0;
-      }
-    }
-
     /* ✅ Enhanced hover effects */
     .btn-primary:hover { 
       background: var(--accent-hover); 
       border-color: var(--accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(59,130,246,0.4);
+      box-shadow: 0 8px 25px rgba(15,23,42,0.3);
     }
     .btn-secondary:hover { 
       background: var(--bg-subtle); 
       border-color: var(--accent); 
       color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(59,130,246,0.2);
-    }
-
-    /* ✅ Interactive section highlights */
-    section:hover::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        400px circle at var(--mx, 50%) var(--my, 50%),
-        rgba(59,130,246,0.03),
-        transparent 50%
-      );
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* ✅ Enhanced card interactions */
-    .about-card:hover { 
-      border-color: var(--accent); 
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 40px rgba(59,130,246,0.15);
-    }
-    .project-card:hover { 
-      border-color: var(--accent); 
-      transform: translateX(0) translateY(-4px) scale(1.02) !important;
-      box-shadow: 0 16px 50px rgba(59,130,246,0.2);
-    }
-    .skill-group:hover { 
-      border-color: var(--accent); 
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 40px rgba(59,130,246,0.15);
-    }
-
-    /* ✅ Interactive timeline */
-    .timeline-item:hover .timeline-dot {
-      transform: scale(1.5);
-      box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
-    }
-
-    /* ✅ Enhanced nav interactions */
-    .nav-links a:hover { 
-      color: var(--accent); 
-      background: rgba(59,130,246,0.1);
-      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(15,23,42,0.2);
     }
 
     /* Optional: reduce effect on touch devices */
@@ -1165,9 +949,6 @@
 </head>
 <body>
 
-<!-- ✅ Interactive Particle Background -->
-<div class="particles" id="particles"></div>
-
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
@@ -1865,99 +1646,19 @@ DO NOT share: personal address, phone number, salary numbers, private company de
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   });
 
-  // ✅ Cursor spotlight tracking with smooth lerp
-  let tx = 50, ty = 50;   // target
-  let cx = 50, cy = 50;   // current
-
-  window.addEventListener('mousemove', (e) => {
-    tx = (e.clientX / window.innerWidth) * 100;
-    ty = (e.clientY / window.innerHeight) * 100;
-  }, { passive: true });
-
-  function animate(){
-    // Smoother lerp with better easing
-    const easing = 0.08; // Reduced for smoother movement
-    cx += (tx - cx) * easing;
-    cy += (ty - cy) * easing;
-    document.documentElement.style.setProperty('--mx', `${cx}%`);
-    document.documentElement.style.setProperty('--my', `${cy}%`);
-    requestAnimationFrame(animate);
-  }
-  animate();
+  // ✅ Cursor spotlight tracking - REMOVED
+  // All background micro-interactions removed for simple UI
 
   // ✅ Enhanced interactive elements
   document.addEventListener('DOMContentLoaded', () => {
-    // ✅ Create particle system
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 30; // Reduced for better visibility
-    
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 20 + 's';
-      particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-      particlesContainer.appendChild(particle);
-    }
-
-    // ✅ Make sure spotlight variables are set immediately
-    document.documentElement.style.setProperty('--mx', '50%');
-    document.documentElement.style.setProperty('--my', '50%');
-
-    // ✅ Dynamic background color based on scroll
-    let scrollProgress = 0;
-    window.addEventListener('scroll', () => {
-      scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      
-      // More noticeable background color shift
-      const hue = 210 + scrollProgress * 30; // Blue to purple
-      const lightness = 96 + scrollProgress * 4; // More noticeable change
-      document.body.style.background = `hsl(${hue}, 25%, ${lightness}%)`;
-    });
-
-    // ✅ Parallax background layers (smoother)
-    window.addEventListener('mousemove', (e) => {
-      const mouseX = (e.clientX / window.innerWidth - 0.5);
-      const mouseY = (e.clientY / window.innerHeight - 0.5);
-      
-      // Move background layers more smoothly
-      const particles = document.querySelector('.particles');
-      if (particles) {
-        // Smooth parallax with easing
-        const parallaxX = mouseX * 30;
-        const parallaxY = mouseY * 30;
-        particles.style.transform = `translate(${parallaxX}px, ${parallaxY}px)`;
-      }
-    });
-
-    // ✅ Section entrance animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'sectionFadeIn 0.8s ease forwards';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('section').forEach(section => {
-      sectionObserver.observe(section);
-    });
-
-    // Add parallax effect to cards (smoother)
+    // Add parallax effect to cards
     const cards = document.querySelectorAll('.about-card, .project-card, .skill-group');
     cards.forEach(card => {
-      card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12; // Reduced for smoother
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 12;
-        card.style.transform = `translateY(-4px) scale(1.02) rotateX(${-y}deg) rotateY(${x}deg)`;
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 8;
+        card.style.transform = `translateY(-2px) scale(1.02) rotateX(${-y}deg) rotateY(${x}deg)`;
       });
       
       card.addEventListener('mouseleave', () => {
@@ -1965,16 +1666,14 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       });
     });
 
-    // Add magnetic effect to buttons (smoother)
+    // Add magnetic effect to buttons
     const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
     buttons.forEach(btn => {
-      btn.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      
       btn.addEventListener('mousemove', (e) => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) translateY(-2px)`;
+        btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) translateY(-1px)`;
       });
       
       btn.addEventListener('mouseleave', () => {
@@ -1982,51 +1681,16 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       });
     });
 
-    // Add glow effect to timeline dots (smoother)
+    // Add glow effect to timeline dots
     const timelineDots = document.querySelectorAll('.timeline-dot');
     timelineDots.forEach(dot => {
-      dot.style.transition = 'box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-      
       dot.addEventListener('mouseenter', () => {
-        dot.style.boxShadow = '0 0 0 12px rgba(59,130,246,0.4)';
-        dot.style.transform = 'scale(1.2)';
+        dot.style.boxShadow = '0 0 0 6px rgba(15,23,42,0.3)';
       });
       
       dot.addEventListener('mouseleave', () => {
         dot.style.boxShadow = '0 0 0 1px var(--border)';
-        dot.style.transform = 'scale(1)';
       });
-    });
-
-    // ✅ Interactive background ripples on click (smoother)
-    document.addEventListener('click', (e) => {
-      // Skip ripple on buttons and interactive elements
-      if (e.target.closest('button, a, .btn-primary, .btn-secondary')) return;
-      
-      const ripple = document.createElement('div');
-      ripple.style.position = 'fixed';
-      ripple.style.left = e.clientX + 'px';
-      ripple.style.top = e.clientY + 'px';
-      ripple.style.width = '0px';
-      ripple.style.height = '0px';
-      ripple.style.borderRadius = '50%';
-      ripple.style.background = 'rgba(59,130,246,0.2)';
-      ripple.style.transform = 'translate(-50%, -50%)';
-      ripple.style.pointerEvents = 'none';
-      ripple.style.zIndex = '996';
-      ripple.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
-      
-      document.body.appendChild(ripple);
-      
-      setTimeout(() => {
-        ripple.style.width = '400px';
-        ripple.style.height = '400px';
-        ripple.style.opacity = '0';
-      }, 10);
-      
-      setTimeout(() => {
-        ripple.remove();
-      }, 1000);
     });
   });
 
