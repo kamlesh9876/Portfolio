@@ -706,6 +706,7 @@
     /* ✅ 1) Make anchor jumps land correctly (navbar offset) */
     html {
       scroll-padding-top: 64px; /* Match nav height */
+      scroll-behavior: smooth;
     }
     
     /* ✅ 2) Prevent navbar overlap with body padding */
@@ -1828,11 +1829,15 @@
   
   // Close mobile menu when clicking on a link
   document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      // Close menu
       navMenuToggle.classList.remove('active');
       navLinks.classList.remove('active');
       navBackdrop.classList.remove('active');
       document.body.style.overflow = ''; // Enable scrolling
+      
+      // Allow default navigation to proceed
+      // Don't preventDefault() so the anchor link works
     });
   });
   
