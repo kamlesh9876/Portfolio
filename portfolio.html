@@ -124,16 +124,40 @@
     /* Mobile Menu Toggle */
     .nav-menu-toggle {
       display: none; background: none; border: none; cursor: pointer;
-      padding: 8px; border-radius: 6px; transition: background 200ms ease;
+      padding: 10px; border-radius: 8px; transition: all 200ms ease;
+      z-index: 1001;
     }
     .nav-menu-toggle:hover { background: var(--bg); }
     .nav-menu-toggle span {
-      display: block; width: 20px; height: 2px; background: var(--text);
-      margin: 4px 0; transition: all 200ms ease;
+      display: block; width: 22px; height: 2px; background: var(--text);
+      margin: 4px 0; transition: all 250ms ease;
+      border-radius: 2px;
     }
-    .nav-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .nav-menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .nav-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    .nav-menu-toggle.active span:nth-child(1) { 
+      transform: rotate(45deg) translate(6px, 6px); 
+      background: var(--accent);
+    }
+    .nav-menu-toggle.active span:nth-child(2) { 
+      opacity: 0; 
+      transform: scale(0);
+    }
+    .nav-menu-toggle.active span:nth-child(3) { 
+      transform: rotate(-45deg) translate(7px, -7px); 
+      background: var(--accent);
+    }
+    
+    /* Mobile Navigation Backdrop */
+    .nav-backdrop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.5); /* Rich black with opacity */
+      opacity: 0; visibility: hidden;
+      transition: all 250ms ease;
+      z-index: 999;
+      backdrop-filter: blur(4px);
+    }
+    .nav-backdrop.active {
+      opacity: 1; visibility: visible;
+    }
 
     /* HERO */
     #hero {
@@ -316,10 +340,11 @@
       letter-spacing: 0.07em; color: var(--text-muted); margin-top: 4px;
     }
 
-    @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero-right { display: none; }
-      .hero-left { max-width: 100%; }
+    @media (max-width: 768px) {
+      .nav-menu-toggle { display: flex; align-items: center; justify-content: center; }
+      .nav-links { display: none; }
+      .nav-links.active { display: flex; }
+      .nav-links{ top: 64px; /* Reduced from 64px to match smaller nav */ }
     }
 
     /* BUTTONS */
@@ -1068,22 +1093,48 @@
         background: var(--bg-white); border-bottom: 1px solid var(--border);
         flex-direction: column; padding: 12px; gap: 8px;
         transform: translateY(-100%); opacity: 0;
-        transition: all 300ms ease; pointer-events: none;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); 
+        pointer-events: none;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        border-radius: 0 0 16px 16px;
+        max-height: calc(100vh - 64px);
+        overflow-y: auto;
       }
       .nav-links.active {
         transform: translateY(0); opacity: 1; pointer-events: all;
       }
       .nav-links a { 
-        padding: 8px 12px; 
+        padding: 12px 16px; 
         font-size: 14px;
         text-align: center;
+        border-radius: 8px;
+        transition: all 200ms ease;
+        transform: translateX(-20px);
+        opacity: 0;
       }
+      .nav-links.active a {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .nav-links.active a:nth-child(1) { transition-delay: 100ms; }
+      .nav-links.active a:nth-child(2) { transition-delay: 150ms; }
+      .nav-links.active a:nth-child(3) { transition-delay: 200ms; }
+      .nav-links.active a:nth-child(4) { transition-delay: 250ms; }
+      .nav-links.active a:nth-child(5) { transition-delay: 300ms; }
+      .nav-links.active a:nth-child(6) { transition-delay: 350ms; }
+      .nav-links.active a:nth-child(7) { transition-delay: 400ms; }
       .nav-resume { 
         margin-top: 8px;
-        padding: 8px 16px !important; 
+        padding: 12px 20px !important; 
         font-size: 14px !important;
         text-align: center;
+        background: var(--accent) !important;
+        color: var(--bg-white) !important;
+        border: none !important;
+      }
+      .nav-resume:hover {
+        background: var(--accent-hover) !important;
+        transform: scale(1.02);
       }
       
       /* Chatbot Mobile */
@@ -1305,6 +1356,7 @@
     </ul>
   </div>
 </nav>
+<div class="nav-backdrop" id="nav-backdrop"></div>
 
 <!-- HERO -->
 <section id="hero">
@@ -1750,18 +1802,46 @@
   // ── MOBILE MENU ──
   const navMenuToggle = document.getElementById('nav-menu-toggle');
   const navLinks = document.getElementById('nav-links');
+  const navBackdrop = document.getElementById('nav-backdrop');
   
-  navMenuToggle.addEventListener('click', () => {
-    navMenuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-  });
-
+  function toggleMobileMenu() {
+    const isOpen = navMenuToggle.classList.contains('active');
+    
+    if (isOpen) {
+      // Close menu
+      navMenuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      navBackdrop.classList.remove('active');
+      document.body.style.overflow = ''; // Enable scrolling
+    } else {
+      // Open menu
+      navMenuToggle.classList.add('active');
+      navLinks.classList.add('active');
+      navBackdrop.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+  }
+  
+  navMenuToggle.addEventListener('click', toggleMobileMenu);
+  
+  // Close menu when clicking on backdrop
+  navBackdrop.addEventListener('click', toggleMobileMenu);
+  
   // Close mobile menu when clicking on a link
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navMenuToggle.classList.remove('active');
       navLinks.classList.remove('active');
+      navBackdrop.classList.remove('active');
+      document.body.style.overflow = ''; // Enable scrolling
     });
+  });
+  
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenuToggle.classList.contains('active')) {
+      toggleMobileMenu();
+    }
   });
 
   // Close mobile menu when clicking outside
