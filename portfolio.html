@@ -59,22 +59,85 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
 
-      /* spotlight is controlled by CSS variables --mx --my */
+      /* bring it above all section backgrounds */
+      z-index: 999;
+
       background:
         radial-gradient(
-          600px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.10),
-          transparent 60%
+          800px circle at var(--mx, 50%) var(--my, 50%),
+          rgba(59,130,246,0.15),
+          rgba(59,130,246,0.08) 40%,
+          transparent 70%
         );
-      transition: background 60ms linear;
+
+      /* optional: makes it blend nicely */
+      mix-blend-mode: screen;
     }
 
-    /* ✅ Make sure your page content stays above the background */
+    /* ✅ Keep content above spotlight */
     body > *{
       position: relative;
+      z-index: 1000;
+    }
+
+    /* ✅ Enhanced hover effects */
+    .btn-primary:hover { 
+      background: var(--accent-hover); 
+      border-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.4);
+    }
+    .btn-secondary:hover { 
+      background: var(--bg-subtle); 
+      border-color: var(--accent); 
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.2);
+    }
+
+    /* ✅ Interactive section highlights */
+    section:hover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        400px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(59,130,246,0.03),
+        transparent 50%
+      );
+      pointer-events: none;
       z-index: 1;
+    }
+
+    /* ✅ Enhanced card interactions */
+    .about-card:hover { 
+      border-color: var(--accent); 
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(59,130,246,0.15);
+    }
+    .project-card:hover { 
+      border-color: var(--accent); 
+      transform: translateX(0) translateY(-4px) scale(1.02) !important;
+      box-shadow: 0 16px 50px rgba(59,130,246,0.2);
+    }
+    .skill-group:hover { 
+      border-color: var(--accent); 
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(59,130,246,0.15);
+    }
+
+    /* ✅ Interactive timeline */
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.5);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
+    }
+
+    /* ✅ Enhanced nav interactions */
+    .nav-links a:hover { 
+      color: var(--accent); 
+      background: rgba(59,130,246,0.1);
+      transform: translateY(-1px);
     }
 
     /* Optional: reduce effect on touch devices */
@@ -1674,6 +1737,51 @@ DO NOT share: personal address, phone number, salary numbers, private company de
     requestAnimationFrame(animate);
   }
   animate();
+
+  // ✅ Enhanced interactive elements
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add parallax effect to cards
+    const cards = document.querySelectorAll('.about-card, .project-card, .skill-group');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
+        card.style.transform = `translateY(-4px) scale(1.02) rotateX(${-y}deg) rotateY(${x}deg)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Add magnetic effect to buttons
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    buttons.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) translateY(-2px)`;
+      });
+      
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translateY(0)';
+      });
+    });
+
+    // Add glow effect to timeline dots
+    const timelineDots = document.querySelectorAll('.timeline-dot');
+    timelineDots.forEach(dot => {
+      dot.addEventListener('mouseenter', () => {
+        dot.style.boxShadow = '0 0 0 8px rgba(59,130,246,0.3)';
+      });
+      
+      dot.addEventListener('mouseleave', () => {
+        dot.style.boxShadow = '0 0 0 1px var(--border)';
+      });
+    });
+  });
 </script>
 </body>
 </html>
