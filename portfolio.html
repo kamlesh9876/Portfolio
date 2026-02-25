@@ -681,13 +681,18 @@
 
     /* ✅ 1) Make anchor jumps land correctly (navbar offset) */
     html {
-      scroll-padding-top: 56px; /* Reduced to match smaller nav */
+      scroll-padding-top: 64px; /* Match nav height */
+    }
+    
+    /* ✅ 2) Prevent navbar overlap with body padding */
+    body {
+      padding-top: 64px; /* Same as navbar height */
     }
 
     /* ✅ Better full-screen hero fit */
     #hero{
       min-height: 100vh;
-      padding-top: 64px;
+      padding-top: 0; /* Reset since body has padding-top */
       padding-bottom: 0;
       display: flex;
       align-items: center;
@@ -925,7 +930,7 @@
       /* Hero Section Mobile */
       #hero {
         min-height: 100vh;
-        padding-top: 56px; /* Reduced to match smaller nav */
+        padding-top: 0; /* Removed since body has padding-top */
         padding-bottom: 40px;
         display: flex;
         align-items: center;
@@ -1059,7 +1064,7 @@
       
       /* Navigation Mobile */
       .nav-links {
-        position: fixed; top: 56px; left: 0; right: 0;
+        position: fixed; top: 64px; left: 0; right: 0;
         background: var(--bg-white); border-bottom: 1px solid var(--border);
         flex-direction: column; padding: 12px; gap: 8px;
         transform: translateY(-100%); opacity: 0;
@@ -1144,7 +1149,7 @@
       
       /* Hero Small Mobile */
       #hero {
-        padding-top: 56px; /* Reduced to match smaller nav */
+        padding-top: 0; /* Removed since body has padding-top */
         padding-bottom: 30px;
       }
       .hero-grid { 
