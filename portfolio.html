@@ -1316,7 +1316,11 @@ DO NOT share: personal address, phone number, salary numbers, private company de
     chatHistory.push({ role: 'user', content: userMsg });
 
     try {
-      const response = await fetch('http://localhost:3001/api/chat', {
+      // Use live API for production, localhost for development
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const apiUrl = isLocalhost ? 'http://localhost:3001/api/chat' : 'https://portfolio-chat-mocha.vercel.app/api/chat';
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'
