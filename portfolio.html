@@ -755,6 +755,68 @@
       }
     }
 
+    /* ✅ 1. Reduce overall section vertical spacing */
+    section{
+      padding: 48px 0; /* was 80px+ */
+    }
+
+    /* ✅ 2. Fix hero taking extra height */
+    #hero{
+      min-height: calc(100vh - 64px);
+      padding-top: 64px;
+      padding-bottom: 24px; /* add small bottom only */
+    }
+
+    /* ✅ 3. Reduce hero internal spacing */
+    .hero-grid{
+      padding: 24px 0 32px;
+      gap: 48px; /* was 100px */
+    }
+
+    /* ✅ 4. Reduce spacing below hero text */
+    .hero-desc{
+      margin-bottom: 20px; /* was 32px */
+    }
+
+    .hero-meta{
+      margin-top: 16px; /* was 24px */
+    }
+
+    .hero-yutsumi{
+      margin-top: 16px; /* was 24px */
+    }
+
+    /* ✅ 5. Reduce About and Contact grid gaps */
+    .about-grid,
+    .contact-grid{
+      gap: 40px; /* was 80px */
+    }
+
+    /* ✅ 6. Reduce projects spacing */
+    .projects-list{
+      gap: 20px; /* was 32px */
+    }
+
+    /* ✅ 7. Reduce skills grid spacing */
+    .skills-grid{
+      gap: 16px; /* was 24px */
+    }
+
+    /* ✅ 8. Reduce process spacing */
+    .process-grid{
+      gap: 12px;
+    }
+
+    /* ✅ 9. Reduce certification spacing */
+    .certs-grid{
+      gap: 10px;
+    }
+
+    /* ✅ 10. Reduce footer spacing */
+    footer{
+      padding: 20px 0; /* was 32px */
+    }
+
     /* RESPONSIVE */
     @media (max-width: 1200px) {
       .container { padding: 0 20px; }
