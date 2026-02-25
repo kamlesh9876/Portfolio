@@ -71,8 +71,8 @@
           transparent 70%
         );
 
-      /* optional: makes it blend nicely */
-      mix-blend-mode: normal;
+      /* smooth transitions */
+      transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* ✅ Additional background layer for depth */
@@ -90,12 +90,18 @@
           transparent 50%
         );
 
-      animation: backgroundPulse 4s ease-in-out infinite;
+      animation: backgroundPulse 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
     @keyframes backgroundPulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
+      0%, 100% { 
+        opacity: 0.6; 
+        transform: scale(1);
+      }
+      50% { 
+        opacity: 1; 
+        transform: scale(1.05);
+      }
     }
 
     /* ✅ Keep content above spotlight */
@@ -107,7 +113,7 @@
     /* ✅ Interactive section backgrounds */
     section {
       position: relative;
-      transition: all 300ms ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     section::before {
@@ -123,7 +129,7 @@
       pointer-events: none;
       z-index: 1;
       opacity: 0;
-      transition: opacity 300ms ease;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     section:hover::before {
@@ -138,7 +144,7 @@
       border-radius: 50% 20% 30% 40%;
       transform: rotate(-15deg);
       z-index: 0;
-      animation: heroFloat 6s ease-in-out infinite;
+      animation: heroFloat 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
     #hero::after {
@@ -151,17 +157,27 @@
           transparent 60%
         );
       z-index: 0;
-      animation: heroGlow 3s ease-in-out infinite alternate;
+      animation: heroGlow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
     }
 
     @keyframes heroFloat {
-      0%, 100% { transform: rotate(-15deg) translateY(0); }
-      50% { transform: rotate(-12deg) translateY(-10px); }
+      0%, 100% { 
+        transform: rotate(-15deg) translateY(0) scale(1);
+      }
+      50% { 
+        transform: rotate(-12deg) translateY(-10px) scale(1.02);
+      }
     }
 
     @keyframes heroGlow {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
+      0% { 
+        opacity: 0.6; 
+        transform: scale(1);
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1.1);
+      }
     }
 
     /* ✅ Particle background effect */
@@ -174,6 +190,7 @@
       pointer-events: none;
       z-index: 997;
       overflow: hidden;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .particle {
@@ -182,23 +199,26 @@
       height: 6px;
       background: rgba(59,130,246,0.6);
       border-radius: 50%;
-      animation: float 20s infinite linear;
+      animation: float 25s cubic-bezier(0.4, 0, 0.2, 1) infinite linear;
       box-shadow: 0 0 10px rgba(59,130,246,0.3);
+      will-change: transform;
     }
 
     @keyframes float {
       0% {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(100vh) rotate(0deg) scale(0);
         opacity: 0;
       }
-      10% {
+      5% {
+        transform: translateY(90vh) rotate(36deg) scale(1);
         opacity: 1;
       }
-      90% {
+      95% {
+        transform: translateY(10vh) rotate(684deg) scale(1);
         opacity: 1;
       }
       100% {
-        transform: translateY(-100vh) rotate(720deg);
+        transform: translateY(0vh) rotate(720deg) scale(0);
         opacity: 0;
       }
     }
@@ -1855,8 +1875,10 @@ DO NOT share: personal address, phone number, salary numbers, private company de
   }, { passive: true });
 
   function animate(){
-    cx += (tx - cx) * 0.12;
-    cy += (ty - cy) * 0.12;
+    // Smoother lerp with better easing
+    const easing = 0.08; // Reduced for smoother movement
+    cx += (tx - cx) * easing;
+    cy += (ty - cy) * easing;
     document.documentElement.style.setProperty('--mx', `${cx}%`);
     document.documentElement.style.setProperty('--my', `${cy}%`);
     requestAnimationFrame(animate);
@@ -1893,15 +1915,18 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       document.body.style.background = `hsl(${hue}, 25%, ${lightness}%)`;
     });
 
-    // ✅ Parallax background layers
+    // ✅ Parallax background layers (smoother)
     window.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX / window.innerWidth - 0.5;
-      const mouseY = e.clientY / window.innerHeight - 0.5;
+      const mouseX = (e.clientX / window.innerWidth - 0.5);
+      const mouseY = (e.clientY / window.innerHeight - 0.5);
       
-      // Move background layers more noticeably
+      // Move background layers more smoothly
       const particles = document.querySelector('.particles');
       if (particles) {
-        particles.style.transform = `translate(${mouseX * 40}px, ${mouseY * 40}px)`;
+        // Smooth parallax with easing
+        const parallaxX = mouseX * 30;
+        const parallaxY = mouseY * 30;
+        particles.style.transform = `translate(${parallaxX}px, ${parallaxY}px)`;
       }
     });
 
@@ -1923,13 +1948,15 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       sectionObserver.observe(section);
     });
 
-    // Add parallax effect to cards
+    // Add parallax effect to cards (smoother)
     const cards = document.querySelectorAll('.about-card, .project-card, .skill-group');
     cards.forEach(card => {
+      card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 15; // Increased effect
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 15;
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12; // Reduced for smoother
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 12;
         card.style.transform = `translateY(-4px) scale(1.02) rotateX(${-y}deg) rotateY(${x}deg)`;
       });
       
@@ -1938,14 +1965,16 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       });
     });
 
-    // Add magnetic effect to buttons
+    // Add magnetic effect to buttons (smoother)
     const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
     buttons.forEach(btn => {
+      btn.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      
       btn.addEventListener('mousemove', (e) => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) translateY(-2px)`;
+        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) translateY(-2px)`;
       });
       
       btn.addEventListener('mouseleave', () => {
@@ -1953,19 +1982,23 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       });
     });
 
-    // Add glow effect to timeline dots
+    // Add glow effect to timeline dots (smoother)
     const timelineDots = document.querySelectorAll('.timeline-dot');
     timelineDots.forEach(dot => {
+      dot.style.transition = 'box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      
       dot.addEventListener('mouseenter', () => {
         dot.style.boxShadow = '0 0 0 12px rgba(59,130,246,0.4)';
+        dot.style.transform = 'scale(1.2)';
       });
       
       dot.addEventListener('mouseleave', () => {
         dot.style.boxShadow = '0 0 0 1px var(--border)';
+        dot.style.transform = 'scale(1)';
       });
     });
 
-    // ✅ Interactive background ripples on click (more visible)
+    // ✅ Interactive background ripples on click (smoother)
     document.addEventListener('click', (e) => {
       // Skip ripple on buttons and interactive elements
       if (e.target.closest('button, a, .btn-primary, .btn-secondary')) return;
@@ -1981,7 +2014,7 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       ripple.style.transform = 'translate(-50%, -50%)';
       ripple.style.pointerEvents = 'none';
       ripple.style.zIndex = '996';
-      ripple.style.transition = 'all 0.8s ease-out';
+      ripple.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
       
       document.body.appendChild(ripple);
       
@@ -1993,7 +2026,7 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       
       setTimeout(() => {
         ripple.remove();
-      }, 800);
+      }, 1000);
     });
   });
 
