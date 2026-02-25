@@ -66,13 +66,13 @@
       background:
         radial-gradient(
           800px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.15),
-          rgba(59,130,246,0.08) 40%,
+          rgba(59,130,246,0.25),
+          rgba(59,130,246,0.15) 40%,
           transparent 70%
         );
 
       /* optional: makes it blend nicely */
-      mix-blend-mode: screen;
+      mix-blend-mode: normal;
     }
 
     /* ✅ Additional background layer for depth */
@@ -86,7 +86,7 @@
       background:
         radial-gradient(
           1200px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.05),
+          rgba(59,130,246,0.12),
           transparent 50%
         );
 
@@ -94,8 +94,8 @@
     }
 
     @keyframes backgroundPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.7; }
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
     }
 
     /* ✅ Keep content above spotlight */
@@ -117,7 +117,7 @@
       background: 
         radial-gradient(
           600px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.02),
+          rgba(59,130,246,0.08),
           transparent 40%
         );
       pointer-events: none;
@@ -134,7 +134,7 @@
     #hero::before {
       content: ''; position: absolute;
       top: -20%; right: -10%; width: 60%; height: 140%;
-      background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, rgba(59,130,246,0.02) 100%);
+      background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(59,130,246,0.08) 100%);
       border-radius: 50% 20% 30% 40%;
       transform: rotate(-15deg);
       z-index: 0;
@@ -147,7 +147,7 @@
       background: 
         radial-gradient(
           800px circle at var(--mx, 50%) var(--my, 50%),
-          rgba(59,130,246,0.08),
+          rgba(59,130,246,0.20),
           transparent 60%
         );
       z-index: 0;
@@ -160,8 +160,8 @@
     }
 
     @keyframes heroGlow {
-      0% { opacity: 0.3; }
-      100% { opacity: 0.7; }
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
     }
 
     /* ✅ Particle background effect */
@@ -178,11 +178,12 @@
 
     .particle {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(59,130,246,0.3);
+      width: 6px;
+      height: 6px;
+      background: rgba(59,130,246,0.6);
       border-radius: 50%;
       animation: float 20s infinite linear;
+      box-shadow: 0 0 10px rgba(59,130,246,0.3);
     }
 
     @keyframes float {
@@ -1866,7 +1867,7 @@ DO NOT share: personal address, phone number, salary numbers, private company de
   document.addEventListener('DOMContentLoaded', () => {
     // ✅ Create particle system
     const particlesContainer = document.getElementById('particles');
-    const particleCount = 50;
+    const particleCount = 30; // Reduced for better visibility
     
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
@@ -1877,15 +1878,19 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       particlesContainer.appendChild(particle);
     }
 
+    // ✅ Make sure spotlight variables are set immediately
+    document.documentElement.style.setProperty('--mx', '50%');
+    document.documentElement.style.setProperty('--my', '50%');
+
     // ✅ Dynamic background color based on scroll
     let scrollProgress = 0;
     window.addEventListener('scroll', () => {
       scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
       
-      // Subtle background color shift
-      const hue = 210 + scrollProgress * 20; // Blue to purple
-      const lightness = 98 + scrollProgress * 2; // Slightly darker
-      document.body.style.background = `hsl(${hue}, 20%, ${lightness}%)`;
+      // More noticeable background color shift
+      const hue = 210 + scrollProgress * 30; // Blue to purple
+      const lightness = 96 + scrollProgress * 4; // More noticeable change
+      document.body.style.background = `hsl(${hue}, 25%, ${lightness}%)`;
     });
 
     // ✅ Parallax background layers
@@ -1893,10 +1898,10 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       const mouseX = e.clientX / window.innerWidth - 0.5;
       const mouseY = e.clientY / window.innerHeight - 0.5;
       
-      // Move background layers slightly
+      // Move background layers more noticeably
       const particles = document.querySelector('.particles');
       if (particles) {
-        particles.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+        particles.style.transform = `translate(${mouseX * 40}px, ${mouseY * 40}px)`;
       }
     });
 
@@ -1923,8 +1928,8 @@ DO NOT share: personal address, phone number, salary numbers, private company de
     cards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 15; // Increased effect
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 15;
         card.style.transform = `translateY(-4px) scale(1.02) rotateX(${-y}deg) rotateY(${x}deg)`;
       });
       
@@ -1940,7 +1945,7 @@ DO NOT share: personal address, phone number, salary numbers, private company de
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) translateY(-2px)`;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) translateY(-2px)`;
       });
       
       btn.addEventListener('mouseleave', () => {
@@ -1952,7 +1957,7 @@ DO NOT share: personal address, phone number, salary numbers, private company de
     const timelineDots = document.querySelectorAll('.timeline-dot');
     timelineDots.forEach(dot => {
       dot.addEventListener('mouseenter', () => {
-        dot.style.boxShadow = '0 0 0 8px rgba(59,130,246,0.3)';
+        dot.style.boxShadow = '0 0 0 12px rgba(59,130,246,0.4)';
       });
       
       dot.addEventListener('mouseleave', () => {
@@ -1960,8 +1965,11 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       });
     });
 
-    // ✅ Interactive background ripples on click
+    // ✅ Interactive background ripples on click (more visible)
     document.addEventListener('click', (e) => {
+      // Skip ripple on buttons and interactive elements
+      if (e.target.closest('button, a, .btn-primary, .btn-secondary')) return;
+      
       const ripple = document.createElement('div');
       ripple.style.position = 'fixed';
       ripple.style.left = e.clientX + 'px';
@@ -1969,23 +1977,23 @@ DO NOT share: personal address, phone number, salary numbers, private company de
       ripple.style.width = '0px';
       ripple.style.height = '0px';
       ripple.style.borderRadius = '50%';
-      ripple.style.background = 'rgba(59,130,246,0.1)';
+      ripple.style.background = 'rgba(59,130,246,0.2)';
       ripple.style.transform = 'translate(-50%, -50%)';
       ripple.style.pointerEvents = 'none';
       ripple.style.zIndex = '996';
-      ripple.style.transition = 'all 0.6s ease-out';
+      ripple.style.transition = 'all 0.8s ease-out';
       
       document.body.appendChild(ripple);
       
       setTimeout(() => {
-        ripple.style.width = '300px';
-        ripple.style.height = '300px';
+        ripple.style.width = '400px';
+        ripple.style.height = '400px';
         ripple.style.opacity = '0';
       }, 10);
       
       setTimeout(() => {
         ripple.remove();
-      }, 600);
+      }, 800);
     });
   });
 
