@@ -1351,6 +1351,8 @@
       <li><a href="#projects">Work</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#" class="nav-resume">Resume ↗</a></li>
     </ul>
@@ -1830,14 +1832,36 @@
   // Close mobile menu when clicking on a link
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', (e) => {
-      // Close menu
-      navMenuToggle.classList.remove('active');
-      navLinks.classList.remove('active');
-      navBackdrop.classList.remove('active');
-      document.body.style.overflow = ''; // Enable scrolling
+      const href = link.getAttribute('href');
       
-      // Allow default navigation to proceed
-      // Don't preventDefault() so the anchor link works
+      // Only handle anchor links, not external links
+      if (href && href.startsWith('#')) {
+        e.preventDefault(); // Prevent default jump
+        
+        // Close menu
+        navMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        navBackdrop.classList.remove('active');
+        document.body.style.overflow = ''; // Enable scrolling
+        
+        // Smooth scroll to section
+        const targetId = href.substring(1); // Remove #
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const offsetTop = targetElement.offsetTop - 64; // Account for navbar
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        // For external links (like resume), just close menu
+        navMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        navBackdrop.classList.remove('active');
+        document.body.style.overflow = ''; // Enable scrolling
+      }
     });
   });
   
