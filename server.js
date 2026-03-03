@@ -16,7 +16,7 @@ app.post('/api/chat', async (req, res) => {
   try {
     console.log('📥 Received request:', JSON.stringify(req.body, null, 2));
     
-    const { messages, system, kb } = req.body;
+const { messages, system, kb } = req.body;
     
     if (!messages || !Array.isArray(messages)) {
       console.error('❌ Invalid messages format');
@@ -33,7 +33,7 @@ app.post('/api/chat', async (req, res) => {
       },
       body: JSON.stringify({
         model: 'llama-3.1-8b-instant',
-        max_tokens: 300,
+max_tokens: 300,
         temperature: 0.2,
         messages: [
           { role: 'system', content: system || '' },
