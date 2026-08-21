@@ -249,6 +249,7 @@ function initPortfolioIntro() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reducedMotion) {
     document.body.classList.add('intro-complete');
+    document.getElementById('intro')?.style.setProperty('display', 'none');
     document.getElementById('navbar')?.style.setProperty('opacity', '1');
     return;
   }
