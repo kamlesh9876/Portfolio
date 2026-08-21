@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Kamlesh Pawar — Python Backend & AI Developer</title>
+  <meta name="description" content="Kamlesh Pawar — Python Backend & AI Developer specializing in FastAPI, RAG pipelines, LLMs, and real-time full-stack architectures." />
+  
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kamlesh Pawar — Python Backend & AI Developer" />
+  <meta property="og:description" content="Python Backend & AI Developer — building things that actually work, with stories about how they came together." />
+  <meta property="og:image" content="https://kamlesh9876.vercel.app/bg.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kamlesh Pawar — Python Backend & AI Developer" />
+  <meta name="twitter:description" content="Python Backend & AI Developer — building things that actually work, with stories about how they came together." />
+  <meta name="twitter:image" content="https://kamlesh9876.vercel.app/bg.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20260819k" />
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.1/dist/lenis.min.js"></script>
+</head>
+
+<body>
+  <!-- ══════════════════════════════════════════════════════════════════
+       SECTION INDEX (order matches styles.css + script.js)
+       00 GLOBAL CHROME   loader / cursor / spotlight      (#loader, #custom-cursor)
+       01 NAVBAR          dock navigation                  (#navbar)
+       02 HERO            /                                (#hero)
+       03 APPROACH        /approach                        (#approach)
+       04 ABOUT           /about                           (#about)
+       05 PROJECTS        /work                            (#projects)
+       06 ARCHITECTURE    /systems                         (#architecture)
+       07 SKILLS          /stack                           (#skills)
+       08 YUTSUMI         AI assistant feature             (#yutsumi)
+       09 EXPERIENCE      /timeline                        (#experience)
+       10 LEARNING        things that broke me             (#learning)
+       11 NEXT            what I'm looking for             (#next)
+       12 CONTACT         /contact                         (#contact)
+       13 CHAT            floating Yutsumi widget          (#chat-toggle, #chat-window)
+       ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- ══════ SECTION 00 · GLOBAL CHROME ══════ -->
+  <!-- Custom Cursor -->
+  <div id="custom-cursor"></div>
+
+  <!-- Ambient Spotlight (Pointer fine only) -->
+  <div class="cursor-spotlight" aria-hidden="true"></div>
+
+  <!-- ══════ SECTION 01 · NAVBAR — macOS-style dock ══════ -->
+  <nav id="navbar" aria-label="Main Navigation">
+    <div class="nav-inner">
+      <!-- K/ identity mark — magnifies with the dock, scrolls home -->
+      <a href="#hero" class="nav-logo dock-item" data-label="Home" aria-label="Home">
+        K<span>/</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#about" class="dock-item" data-label="About">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M5.5 19.5c1.2-3.4 3.6-5 6.5-5s5.3 1.6 6.5 5" />
+          </svg>
+          <span class="nav-text">/about</span>
+        </a>
+
+        <a href="#projects" class="dock-item" data-label="Work">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
+          </svg>
+          <span class="nav-text">/work</span>
+        </a>
+
+        <a href="#architecture" class="dock-item" data-label="Systems">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="6" cy="6" r="2.2" />
+            <circle cx="18" cy="6" r="2.2" />
+            <circle cx="6" cy="18" r="2.2" />
+            <circle cx="18" cy="18" r="2.2" />
+            <path d="M8.2 6h7.6M6 8.2v7.6M18 8.2v7.6M8.2 18h7.6" />
+          </svg>
+          <span class="nav-text">/systems</span>
+        </a>
+
+        <a href="#skills" class="dock-item" data-label="Stack">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z" />
+            <path d="M4 12.5l8 4 8-4" />
+            <path d="M4 16.5l8 4 8-4" />
+          </svg>
+          <span class="nav-text">/stack</span>
+        </a>
+
+        <a href="#experience" class="dock-item" data-label="Timeline">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="M12 7.5V12l3 2" />
+          </svg>
+          <span class="nav-text">/timeline</span>
+        </a>
+
+        <a href="#contact" class="dock-item" data-label="Contact">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+            <path d="M4.5 7.5l7.5 5.5 7.5-5.5" />
+          </svg>
+          <span class="nav-text">/contact</span>
+        </a>
+
+        <span class="nav-divider" aria-hidden="true"></span>
+
+        <a href="https://github.com/kamlesh9876" target="_blank" rel="noopener noreferrer" class="dock-item nav-github" data-label="GitHub" aria-label="View GitHub">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       PORTFOLIO INTRO
+  ========================================= -->
+  <section id="intro" aria-label="Portfolio introduction">
+    <div class="intro-sticky" aria-hidden="true">
+      <!-- Background -->
+      <div class="intro-background"></div>
+
+      <!-- Ambient glow -->
+      <div class="intro-glow intro-glow-1"></div>
+      <div class="intro-glow intro-glow-2"></div>
+
+      <!-- Blueprint corner brackets -->
+      <span class="intro-corner intro-corner-tl" aria-hidden="true"></span>
+      <span class="intro-corner intro-corner-tr" aria-hidden="true"></span>
+      <span class="intro-corner intro-corner-bl" aria-hidden="true"></span>
+      <span class="intro-corner intro-corner-br" aria-hidden="true"></span>
+
+      <!-- Center content -->
+      <div class="intro-content">
+        <div class="intro-mark">
+          K<span>/</span>
+        </div>
+
+        <div class="intro-hint">
+          <span class="intro-scroll-line"></span>
+          <span>SCROLL TO BEGIN</span>
+        </div>
+      </div>
+
+      <!-- MAC WINDOW -->
+      <div class="hello-mac" id="helloMac">
+        <div class="mac-titlebar">
+          <div class="mac-controls">
+            <span class="mac-dot mac-close"></span>
+            <span class="mac-dot mac-minimize"></span>
+            <span class="mac-dot mac-maximize"></span>
+          </div>
+          <div class="mac-title">
+            kamlesh@portfolio
+          </div>
+        </div>
+
+        <div class="mac-body">
+          <div class="mac-prompt">
+            <span class="prompt-symbol">$</span>
+            <span class="prompt-command">whoami</span>
+          </div>
+
+          <div class="mac-email">
+            <span id="emailText"></span>
+            <span class="typing-cursor"></span>
+          </div>
+
+          <div class="mac-subtext">
+            backend engineer · ai · systems
+          </div>
+
+          <div class="mac-tech-stack">
+            <div class="tech-icon" data-tech="python">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="tech-icon" data-tech="node">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polygon points="2 17 12 22 22 17"/>
+                <polygon points="2 7 2 17 12 22 12 12"/>
+                <polygon points="22 7 22 17 12 12"/>
+              </svg>
+            </div>
+            <div class="tech-icon" data-tech="ai">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <div class="tech-icon" data-tech="database">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <div class="tech-icon" data-tech="cloud">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+              </svg>
+            </div>
+            <div class="tech-icon" data-tech="git">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="12" y1="9" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="15"/>
+                <circle cx="6" cy="12" r="2"/>
+                <circle cx="18" cy="12" r="2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress indicator -->
+      <div class="intro-progress">
+        <div class="intro-progress-bar" id="introProgress"></div>
+      </div>
+      <div class="intro-stage-dots" id="introStageDots">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- ══════ SECTION 02 · HERO (/) ══════ -->
+    <section id="hero" aria-label="Hero Section">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- LEFT: Content -->
+          <div class="hero-left">
+            <div class="hero-status">
+              <span class="dot" aria-hidden="true"></span>
+              <span>Currently building things that are supposed to work on the first try.</span>
+            </div>
+            <h1 class="hero-name reveal-text">
+              <span class="hero-name-first">Kamlesh</span>
+              <span class="hero-name-last">Pawar</span>
+            </h1>
+            <div class="hero-role reveal-text">
+              <strong>Python Backend & AI Developer</strong>
+            </div>
+            <p class="hero-desc reveal">
+              I like figuring out what happens behind the screen — how an API handles a request, how a system survives a disconnect, how an LLM finds the right information, and what happens when everything goes wrong at once.
+            </p>
+
+            <div class="hero-actions reveal">
+              <a href="#projects" class="btn-primary">Explore my work →</a>
+              <a href="#approach" class="btn-secondary">See how I think →</a>
+            </div>
+
+            <div class="hero-stack-line reveal">Python · FastAPI · RAG · LLMs · Real-Time Systems</div>
+          </div>
+
+          <!-- RIGHT: Live Meta Card -->
+          <div class="hero-right">
+            <div class="hero-panel">
+              <div class="panel-header">
+                <span class="panel-dot" style="background:#FF5F57;" aria-hidden="true"></span>
+                <span class="panel-dot" style="background:#FFBD2E;" aria-hidden="true"></span>
+                <span class="panel-dot" style="background:#28C840;" aria-hidden="true"></span>
+                <span class="panel-header-title">kamlesh.config</span>
+              </div>
+              <div class="panel-body">
+                <div class="info-row">
+                  <div class="info-row-icon">role</div>
+                  <div>
+                    <div class="info-row-label">Status</div>
+                    <div class="info-row-value">Open to Backend + AI roles</div>
+                  </div>
+                </div>
+
+                <div class="info-row">
+                  <div class="info-row-icon">stack</div>
+                  <div>
+                    <div class="info-row-label">Core Stack</div>
+                    <div class="info-row-value">
+                      <span class="tag-inline">Python</span>
+                      <span class="tag-inline">FastAPI</span>
+                      <span class="tag-inline">LLMs / RAG</span>
+                      <span class="tag-inline">PostgreSQL</span>
+                      <span class="tag-inline">Docker</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="info-row">
+                  <div class="info-row-icon">now</div>
+                  <div>
+                    <div class="info-row-label">Currently</div>
+                    <div class="info-row-value">Building AI-powered backend systems</div>
+                  </div>
+                </div>
+
+                <div class="panel-stat-row">
+                  <div class="panel-stat">
+                    <div class="panel-stat-num">40<span>+</span></div>
+                    <div class="panel-stat-label">Projects</div>
+                  </div>
+                  <div class="panel-stat">
+                    <div class="panel-stat-num">3<span>+</span></div>
+                    <div class="panel-stat-label">Years Building</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <span>SCROLL TO EXPLORE</span>
+        <span class="hero-scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- MARQUEE BAND 1: Tech Stack -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Python</span><span class="marquee-dot"></span><span>FastAPI</span><span class="marquee-dot"></span><span>RAG</span><span class="marquee-dot"></span><span>FAISS</span><span class="marquee-dot"></span><span>LangChain</span><span class="marquee-dot"></span><span>Next.js</span><span class="marquee-dot"></span><span>WebSockets</span><span class="marquee-dot"></span><span>PostgreSQL</span><span class="marquee-dot"></span><span>Docker</span><span class="marquee-dot"></span><span>Groq</span><span class="marquee-dot"></span>
+        <span>Python</span><span class="marquee-dot"></span><span>FastAPI</span><span class="marquee-dot"></span><span>RAG</span><span class="marquee-dot"></span><span>FAISS</span><span class="marquee-dot"></span><span>LangChain</span><span class="marquee-dot"></span><span>Next.js</span><span class="marquee-dot"></span><span>WebSockets</span><span class="marquee-dot"></span><span>PostgreSQL</span><span class="marquee-dot"></span><span>Docker</span><span class="marquee-dot"></span><span>Groq</span><span class="marquee-dot"></span>
+      </div>
+    </div>
+
+    <!-- ══════ SECTION 03 · APPROACH (/approach) ══════ -->
+    <section id="approach" aria-labelledby="approach-heading">
+      <!-- Liquid blurred video backdrop -->
+      <div class="approach-bg" data-parallax="0.16" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="approach-bg.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="container">
+        <div class="section-header--narrow reveal">
+          <span class="section-path">/approach</span>
+          <h2 id="approach-heading" class="section-heading section-heading--right">I Build. I Break. I Figure It Out.</h2>
+          <p class="section-sub">Most of my learning has happened somewhere between "this should work" and "why the hell is this returning 401?"</p>
+        </div>
+        <div class="why-grid stagger">
+          <div class="why-card">
+            <div class="why-card-num">01</div>
+            <div class="why-card-tag">01 / Core Principle</div>
+            <h3 class="why-title">I Go Under the Hood</h3>
+            <p class="why-desc">I don't like treating frameworks as magic boxes. When something breaks, I want to understand where it actually broke — the API contract, database, network, process, deployment environment, or that tiny line of code I was convinced couldn't possibly be wrong.</p>
+            <div class="why-card-meta">trace → isolate → understand</div>
+          </div>
+          <div class="why-card">
+            <div class="why-card-num">02</div>
+            <div class="why-card-tag">02 / Production Thinking</div>
+            <h3 class="why-title">I Think Beyond "It Works"</h3>
+            <p class="why-desc">Getting a feature running locally is only the beginning. I care about what happens after I deploy it — validation, persistence, concurrency, observability, and the things a real user will inevitably do that I never expected.</p>
+            <div class="why-card-meta">build → test → observe → improve</div>
+          </div>
+          <div class="why-card">
+            <div class="why-card-num">03</div>
+            <div class="why-card-tag">03 / AI Philosophy</div>
+            <h3 class="why-title">AI, But Grounded</h3>
+            <p class="why-desc">I'm interested in useful AI, not AI for decoration. I care about giving models the right context, constraining what they're allowed to do, and making their outputs reliable enough to actually trust.</p>
+            <div class="why-card-meta">context → retrieve → reason → respond</div>
+          </div>
+          <div class="why-card">
+            <div class="why-card-num">04</div>
+            <div class="why-card-tag">04 / Failure Engineering</div>
+            <h3 class="why-title">I Design for Failure</h3>
+            <p class="why-desc">Systems rarely fail where you expect. So I design for the moment everything goes wrong at once — invalid input, expired sessions, unavailable services, race conditions — so the system degrades gracefully instead of collapsing.</p>
+            <div class="why-card-meta">validate → recover → retry → fail safely</div>
+          </div>
+          <div class="why-card">
+            <div class="why-card-num">05</div>
+            <div class="why-card-tag">05 / Learning Loop</div>
+            <h3 class="why-title">I Learn by Shipping</h3>
+            <p class="why-desc">Tutorials teach you syntax; shipping teaches you judgment. Every project here taught me something the docs never would — usually at 2 AM, usually the hard way, and always written down so future me doesn't have to relearn it.</p>
+            <div class="why-card-meta">build → break → learn → repeat</div>
+          </div>
+        </div>
+        <div class="approach-philosophy reveal">
+          <span class="philosophy-path">$ philosophy --current</span>
+          <div class="philosophy-lines">
+            <span>understand deeply.</span>
+            <span>build deliberately.</span>
+            <span>fail gracefully.</span>
+            <span>keep learning.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ SECTION 04 · ABOUT (/about) ══════ -->
+    <section id="about" aria-label="About Kamlesh">
+      <!-- Portrait backdrop (k1.png) — dimmed, right-anchored -->
+      <div class="about-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="reveal">
+          <span class="section-path">/about</span>
+          <h2 class="section-heading">So, who is Kamlesh?</h2>
+          <p class="section-sub">Backend engineer in the making, AI enthusiast by curiosity, and professional debugger by necessity.</p>
+        </div>
+
+        <!-- Image Marquee — one row, photo as the anchor, crimson-mono palette -->
+        <div class="about-image-marquee" aria-hidden="true">
+          <div class="about-marquee-row">
+            <div class="about-marquee-track">
+              <div class="about-tile tile-photo tile-anchor" style="background-image:url('./hero-prof.png')"></div>
+              <div class="about-tile tile-code"><div class="tile-content"><span class="tile-keyword">async def</span> <span class="tile-fn">build</span>(<span class="tile-param">system</span>):</div></div>
+              <div class="about-tile tile-wide tile-flow"><div class="tile-content">request → API → service → database → response</div></div>
+              <div class="about-tile tile-gradient-ink"></div>
+              <div class="about-tile tile-wide tile-philosophy"><div class="tile-content">context <span class="tile-op">&gt;</span> hallucination</div></div>
+              <div class="about-tile tile-gradient-crimson"></div>
+              <div class="about-tile tile-code"><div class="tile-content"><span class="tile-keyword">await</span> <span class="tile-fn">understand</span>(<span class="tile-param">why</span>)</div></div>
+              <div class="about-tile tile-wide tile-flow"><div class="tile-content">ship → observe → improve → ship again</div></div>
+              <div class="about-tile tile-gradient-burgundy"></div>
+              <div class="about-tile tile-wide tile-systems"><div class="tile-content">APIs · State · Concurrency · Recovery</div></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="about-tile tile-photo tile-anchor" style="background-image:url('./hero-prof.png')"></div>
+              <div class="about-tile tile-code"><div class="tile-content"><span class="tile-keyword">async def</span> <span class="tile-fn">build</span>(<span class="tile-param">system</span>):</div></div>
+              <div class="about-tile tile-wide tile-flow"><div class="tile-content">request → API → service → database → response</div></div>
+              <div class="about-tile tile-gradient-ink"></div>
+              <div class="about-tile tile-wide tile-philosophy"><div class="tile-content">context <span class="tile-op">&gt;</span> hallucination</div></div>
+              <div class="about-tile tile-gradient-crimson"></div>
+              <div class="about-tile tile-code"><div class="tile-content"><span class="tile-keyword">await</span> <span class="tile-fn">understand</span>(<span class="tile-param">why</span>)</div></div>
+              <div class="about-tile tile-wide tile-flow"><div class="tile-content">ship → observe → improve → ship again</div></div>
+              <div class="about-tile tile-gradient-burgundy"></div>
+              <div class="about-tile tile-wide tile-systems"><div class="tile-content">APIs · State · Concurrency · Recovery</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- The story — the one expressive card -->
+        <div class="about-glass-wrapper" data-reveal="scale-in">
+          <div class="about-glass-card about-glass-text reveal">
+            <div class="about-card-video" aria-hidden="true">
+              <div class="video-blob video-blob-1"></div>
+              <div class="video-blob video-blob-2"></div>
+            </div>
+            <p>I'm a Computer Science graduate from Pune who became slightly obsessed with figuring out what happens behind the interface — how a request moves through a system, how data flows between components, and what happens when something inevitably breaks.</p>
+            <p>My journey hasn't been a straight line from "learn Python" to "become a backend engineer." I've explored different languages, built APIs and database-driven applications, worked with Linux and real-time systems, supported real-world software, and spent an unreasonable amount of time debugging things that looked completely fine five minutes earlier.</p>
+            <p>Somewhere along the way, backend engineering became the part I enjoyed most. I like software where there is something to reason about — not just whether a feature works, but why it works, how it fails, and what happens when the environment stops behaving like the happy path.</p>
+            <p>More recently, that curiosity has moved toward AI engineering. I'm especially interested in the intersection between traditional backend systems and LLMs: retrieval, RAG pipelines, model integration, structured outputs, and building AI systems that are grounded in useful information rather than simply generating convincing answers.</p>
+            <p><strong>I'm still early in my career. And honestly, I like that.</strong></p>
+            <p>There's a lot I don't know yet. That's also the part I'm most excited about. I'm here to keep building, keep breaking things, understand what went wrong, and come back with a better system.</p>
+          </div>
+        </div>
+
+        <!-- Engineering Principles — full-bleed diff block (no card) -->
+        <div class="about-diff reveal" data-reveal="scale-in">
+          <div class="about-diff-label">// engineering_principles.diff</div>
+          <div class="about-diff-lines">
+            <div class="about-diff-line">
+              <span class="diff-marker">+</span>
+              <span class="diff-num">01</span>
+              <span class="diff-text">If I can't explain it, I probably don't understand it.</span>
+            </div>
+            <div class="about-diff-line">
+              <span class="diff-marker">+</span>
+              <span class="diff-num">02</span>
+              <span class="diff-text">A working prototype is not necessarily a working system.</span>
+            </div>
+            <div class="about-diff-line">
+              <span class="diff-marker">+</span>
+              <span class="diff-num">03</span>
+              <span class="diff-text">AI should have context, constraints and a reason to exist.</span>
+            </div>
+            <div class="about-diff-line">
+              <span class="diff-marker">+</span>
+              <span class="diff-num">04</span>
+              <span class="diff-text">Build for the next developer, not just the current feature.</span>
+            </div>
+            <div class="about-diff-line">
+              <span class="diff-marker">+</span>
+              <span class="diff-num">05</span>
+              <span class="diff-text">If it worked on my machine, the machine is now part of the investigation.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey strip — visual path, no card chrome -->
+        <div class="about-journey reveal" data-reveal="scale-in">
+          <div class="journey-steps">
+            <div class="journey-step past"><span class="journey-dot"></span>Curiosity</div>
+            <div class="journey-step past"><span class="journey-dot"></span>Building</div>
+            <div class="journey-step now"><span class="journey-dot"></span>Backend</div>
+            <div class="journey-step now"><span class="journey-dot"></span>Shipping</div>
+            <div class="journey-step now"><span class="journey-dot"></span>AI + LLMs</div>
+            <div class="journey-step next"><span class="journey-dot"></span>Deeper systems</div>
+          </div>
+        </div>
+
+        <div class="about-footer-row" data-reveal="scale-in">
+          <div class="about-whoami reveal">
+            <div class="whoami-terminal">
+              <div class="whoami-header">
+                <span class="whoami-dot" style="background:#FF5F57"></span>
+                <span class="whoami-dot" style="background:#FFBD2E"></span>
+                <span class="whoami-dot" style="background:#28C840"></span>
+                <span class="whoami-title">kamlesh@portfolio</span>
+              </div>
+              <div class="whoami-body">
+                <div><span class="whoami-prompt">$</span> <span class="whoami-cmd">whoami</span></div>
+                <div class="whoami-output">kamlesh</div>
+                <div><span class="whoami-prompt">$</span> <span class="whoami-cmd">cat role.txt</span></div>
+                <div class="whoami-output">software engineer</div>
+                <div><span class="whoami-prompt">$</span> <span class="whoami-cmd">cat focus.txt</span></div>
+                <div class="whoami-output">backend + AI + systems</div>
+                <div><span class="whoami-prompt">$</span> <span class="whoami-cmd">cat currently.txt</span></div>
+                <div class="whoami-output whoami-list">
+                  <div>&rarr; Exploring AI-powered backend systems</div>
+                  <div>&rarr; Building RAG pipelines &amp; retrieval workflows</div>
+                  <div>&rarr; Working with LLM integrations</div>
+                  <div>&rarr; Improving reliable, testable APIs</div>
+                </div>
+                <div><span class="whoami-prompt">$</span> <span class="whoami-cmd">pwd</span></div>
+                <div class="whoami-output">Pune, India</div>
+                <div><span class="whoami-prompt">$</span> <span class="whoami-cmd">status</span></div>
+                <div class="whoami-output whoami-active">building · learning · shipping</div>
+                <div class="whoami-status-line">
+                  <span class="status-dot"></span>
+                  <span>Open to Opportunities — Backend · AI Engineering</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-mini-stack reveal">
+            <div class="about-card-label">Stack</div>
+            <div class="mini-stack-grid">
+              <div class="mini-stack-row">
+                <div class="mini-stack-label">Backend</div>
+                <div class="mini-stack-items">Python · FastAPI · Flask</div>
+              </div>
+              <div class="mini-stack-row">
+                <div class="mini-stack-label">AI</div>
+                <div class="mini-stack-items">LLMs · RAG · LangChain · FAISS</div>
+              </div>
+              <div class="mini-stack-row">
+                <div class="mini-stack-label">Data</div>
+                <div class="mini-stack-items">PostgreSQL · MongoDB · MySQL</div>
+              </div>
+              <div class="mini-stack-row">
+                <div class="mini-stack-label">Systems</div>
+                <div class="mini-stack-items">Linux · Docker · Git · REST</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════ SECTION 05 · PROJECTS (/work) ══════ -->
+    <section id="projects" aria-label="Featured Projects">
+      <!-- Liquid backdrop — minimal blur glass treatment -->
+      <div class="projects-bg" data-parallax="0.16" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="approach-bg.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="container">
+        <div class="section-header--narrow reveal">
+          <span class="section-path">/work</span>
+          <h2 class="section-heading">Things I Built Because I Wanted to Know If I Could</h2>
+          <p class="section-sub">Some started as ideas. Some started as assignments. Some started because I had no idea how difficult they would become.</p>
+        </div>
+        <div class="bento-grid stagger">
+
+          <!-- Project 1: Featured - spans 2 columns -->
+          <article class="bento-card bento-large" data-project="doc-analyser">
+            <div class="bento-card-inner">
+              <div class="project-header">
+                <h3 class="project-title">DOC Analyser</h3>
+                <span class="project-badge">RAG + Vector DB</span>
+              </div>
+              <p class="project-question">Can I make an LLM answer questions from a document without simply making things up?</p>
+              <p class="project-desc">
+                A document Q&A system using RAG, FAISS, LangChain and LLM APIs. Documents are split, embedded and indexed before relevant context is retrieved for generation.
+              </p>
+              <div class="project-impact">
+                <strong>The interesting part:</strong> The difficult part wasn't calling an LLM. It was deciding what information the model should actually see.
+              </div>
+              <div class="project-learned">
+                <strong>What it taught me:</strong> Retrieval quality matters just as much as generation quality. A smarter model cannot magically fix bad context.
+              </div>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">RAG</span>
+                <span class="tag">FAISS</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">Gemini</span>
+                <span class="tag">Groq</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/kamlesh9876/DOC-Analyser-Using-LLM" target="_blank" rel="noopener noreferrer" class="btn-sm btn-sm-primary">
+                  View Code on GitHub ↗
+                </a>
+                <button type="button" class="btn-sm btn-sm-secondary bento-expand">details +</button>
+              </div>
+            </div>
+            <div class="project-number" aria-hidden="true">01</div>
+          </article>
+
+          <article class="bento-card" data-project="code-editor">
+            <div class="bento-card-inner">
+              <div class="project-header">
+                <h3 class="project-title">Online Code Editor</h3>
+                <span class="project-badge">WebSockets + Full Stack</span>
+              </div>
+              <p class="project-question">What if a browser could become a tiny development environment?</p>
+              <p class="project-desc">
+                A browser-based code editor with real-time communication, syntax highlighting, session persistence and code execution.
+              </p>
+              <div class="project-impact">
+                <strong>The rabbit hole:</strong> Building the editor was one problem. Keeping state synchronized while multiple things happen at the same time was another.
+              </div>
+              <div class="project-learned">
+                <strong>What I learned:</strong> Real-time applications force you to think differently about state. You stop asking only "what is the value?" and start asking "who changed it, when, and what does everyone else know?"
+              </div>
+              <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">WebSockets</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">CodeMirror</span>
+                <span class="tag">Express</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://kamlesh9876.github.io/Online-Code-Editor-/" target="_blank" rel="noopener noreferrer" class="btn-sm btn-sm-primary">
+                  Live Demo ↗
+                </a>
+                <a href="https://github.com/kamlesh9876/Online-Code-Editor-" target="_blank" rel="noopener noreferrer" class="btn-sm btn-sm-secondary">
+                  Source Code ↗
+                </a>
+                <button type="button" class="btn-sm btn-sm-secondary bento-expand">details +</button>
+              </div>
+            </div>
+            <div class="project-number" aria-hidden="true">02</div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="bento-card" data-project="vedaz">
+            <div class="bento-card-inner">
+              <div class="project-header">
+                <h3 class="project-title">Vedaz — Real-Time Chat</h3>
+                <span class="project-badge">WebSockets + React</span>
+              </div>
+              <p class="project-question">Build a chat application where messages don't disappear just because the server restarted.</p>
+              <p class="project-desc">
+                React + Node.js + Express + Socket.IO + SQLite. Handles authentication, persistent messages, timestamps, typing indicators, online/offline presence, delivery states and real-time communication.
+              </p>
+              <div class="project-impact">
+                <strong>The part I actually cared about:</strong> Real-time UI is easy to fake. Making the state reliable is harder.
+              </div>
+              <div class="project-learned">
+                <strong>What I learned:</strong> WebSockets make communication instant. They don't automatically make your application correct.
+              </div>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Socket.IO</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">Express</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/kamlesh9876/W-people-" target="_blank" rel="noopener noreferrer" class="btn-sm btn-sm-primary">
+                  View Code ↗
+                </a>
+                <button type="button" class="btn-sm btn-sm-secondary bento-expand">details +</button>
+              </div>
+            </div>
+            <div class="project-number" aria-hidden="true">03</div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="bento-card" data-project="digital-id">
+            <div class="bento-card-inner">
+              <div class="project-header">
+                <h3 class="project-title">Digital ID Management System</h3>
+                <span class="project-badge">Full Deployment</span>
+              </div>
+              <p class="project-question">A university needed a practical way to generate and manage digital student IDs. So I built one.</p>
+              <p class="project-desc">
+                The system handles student information, digital ID generation, QR/barcode integration, PIN protection, print-ready output and administrative workflows.
+              </p>
+              <div class="project-impact">
+                <strong>The interesting part:</strong> This wasn't just about writing code. It involved deployment, Apache/PHP configuration, database changes, file handling, environment issues and figuring out what breaks when software leaves your laptop.
+              </div>
+              <div class="project-learned">
+                <strong>What it taught me:</strong> Real software doesn't live inside VS Code. It lives in messy environments, with real users, real data and real problems.
+              </div>
+              <div class="project-tags">
+                <span class="tag">PHP</span>
+                <span class="tag">Apache</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Deployment</span>
+                <span class="tag">System Admin</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/kamlesh9876" target="_blank" rel="noopener noreferrer" class="btn-sm btn-sm-primary">
+                  View on GitHub ↗
+                </a>
+                <button type="button" class="btn-sm btn-sm-secondary bento-expand">details +</button>
+              </div>
+            </div>
+            <div class="project-number" aria-hidden="true">04</div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="bento-card" data-project="emo">
+            <div class="bento-card-inner">
+              <div class="project-header">
+                <h3 class="project-title">EMO — AI Persona System</h3>
+                <span class="project-badge">Python + LLM Modes</span>
+              </div>
+              <p class="project-question">What happens when one model has to argue, research, code, and small-talk — without sounding the same?</p>
+              <p class="project-desc">
+                A cyberpunk-inspired AI persona system with dynamic modes for casual chat, deep research, code generation, and structured debates — tuned for high-signal, zero-fluff interactions.
+              </p>
+              <div class="project-impact">
+                <strong>The interesting part:</strong> Each mode changes what the model prioritizes — depth, structure, or speed — instead of treating every prompt the same way.
+              </div>
+              <div class="project-learned">
+                <strong>What it taught me:</strong> Prompt architecture is real architecture. Constraints and context shape behavior more than model size does.
+              </div>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">LLM APIs</span>
+                <span class="tag">Prompt Design</span>
+                <span class="tag">Persona Modes</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/kamlesh9876/Emo" target="_blank" rel="noopener noreferrer" class="btn-sm btn-sm-primary">
+                  View Code on GitHub ↗
+                </a>
+                <button type="button" class="btn-sm btn-sm-secondary bento-expand">details +</button>
+              </div>
+            </div>
+            <div class="project-number" aria-hidden="true">05</div>
+          </article>
+        </div>
+
+        <!-- Live GitHub Repos Widget -->
+        <div class="github-stats-container reveal">
+          <div class="github-header">
+            <h3 class="github-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Live GitHub Activity
+            </h3>
+            <span class="tag" id="github-repo-count">34+ Repositories</span>
+          </div>
+          <div class="github-repos-grid" id="github-repos-grid">
+            <!-- Populated dynamically via script.js -->
+            <div class="github-repo-card">
+              <div class="repo-name">DOC-Analyser-Using-LLM</div>
+              <div class="repo-desc">Document Q&A engine with FAISS vector search and Gemini API.</div>
+              <div class="repo-meta"><span>● Python</span><span>★ Active</span></div>
+            </div>
+            <div class="github-repo-card">
+              <div class="repo-name">Online-Code-Editor-</div>
+              <div class="repo-desc">Collaborative live code compiler with WebSockets.</div>
+              <div class="repo-meta"><span>● JavaScript</span><span>★ Active</span></div>
+            </div>
+            <div class="github-repo-card">
+              <div class="repo-name">W-people-</div>
+              <div class="repo-desc">Real-time mobile chat messenger with Firebase backend.</div>
+              <div class="repo-meta"><span>● Kotlin</span><span>★ Active</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════ SECTION 06 · ARCHITECTURE (/systems) ══════ -->
+    <section id="architecture" aria-label="System Architecture Diagrams">
+      <!-- Portrait backdrop (k2.png) — dimmed, right-anchored -->
+      <div class="arch-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="reveal">
+          <span class="section-path">/systems</span>
+          <h2 class="section-heading">Let's Open the Hood.</h2>
+          <p class="section-sub">Instead of showing you another list of technologies, here's how I think about the systems behind them.</p>
+        </div>
+        <div class="arch-container" data-reveal="blur-in">
+          <span class="bp-corner bp-corner-tl" aria-hidden="true"></span>
+          <span class="bp-corner bp-corner-tr" aria-hidden="true"></span>
+          <span class="bp-corner bp-corner-bl" aria-hidden="true"></span>
+          <span class="bp-corner bp-corner-br" aria-hidden="true"></span>
+          <div class="arch-controls" role="tablist">
+            <button class="arch-btn active" data-arch="rag" role="tab" aria-selected="true"><span class="arch-btn-num">01</span> RAG Pipeline</button>
+            <button class="arch-btn" data-arch="realtime" role="tab" aria-selected="false"><span class="arch-btn-num">02</span> Real-Time Assessment</button>
+            <button class="arch-btn" data-arch="yutsumi" role="tab" aria-selected="false"><span class="arch-btn-num">03</span> AI Chat Proxy</button>
+          </div>
+
+          <!-- State 1: RAG Pipeline -->
+          <div class="arch-view active" id="arch-rag" role="tabpanel">
+            <div class="arch-svg-wrap">
+            <svg class="arch-svg" viewBox="0 0 800 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <symbol id="bp-corners-rag" viewBox="0 0 140 60">
+                  <path d="M0,14 L0,0 L14,0" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M126,0 L140,0 L140,14" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M140,46 L140,60 L126,60" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M14,60 L0,60 L0,46" fill="none" vector-effect="non-scaling-stroke"/>
+                </symbol>
+              </defs>
+
+              <!-- NODE 01 — User Document -->
+              <use href="#bp-corners-rag" x="20" y="70" width="130" height="60" stroke="rgba(245,241,237,0.5)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <line x1="85" y1="70" x2="85" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="85" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.6">01 · </tspan><tspan fill="#F5F1ED">USER DOCUMENT</tspan>
+              </text>
+              <line x1="85" y1="130" x2="85" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="85" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">PDF / TXT</text>
+
+              <!-- Connector 01 → 02 (dashed — ingestion) -->
+              <line x1="150" y1="100" x2="150" y2="94" stroke="rgba(245,241,237,0.3)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <line x1="150" y1="100" x2="150" y2="106" stroke="rgba(245,241,237,0.3)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M150 100 H200" stroke="rgba(245,241,237,0.3)" stroke-width="1" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"/>
+              <polygon points="207,100 197,96 197,104" fill="rgba(245,241,237,0.3)"/>
+
+              <!-- NODE 02 — Chunk & Embed -->
+              <use href="#bp-corners-rag" x="210" y="70" width="140" height="60" stroke="rgba(245,241,237,0.5)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <line x1="280" y1="70" x2="280" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="280" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.6">02 · </tspan><tspan fill="#F5F1ED">CHUNK &amp; EMBED</tspan>
+              </text>
+              <line x1="280" y1="130" x2="280" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="280" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">RECURSIVESPLITTER</text>
+
+              <!-- Connector 02 → 03 -->
+              <line x1="350" y1="94" x2="350" y2="106" stroke="rgba(245,241,237,0.3)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M350 100 H400" stroke="#DC143C" stroke-width="1.25" vector-effect="non-scaling-stroke"/>
+              <polygon points="407,100 397,96 397,104" fill="#DC143C"/>
+
+              <!-- NODE 03 — FAISS Vector Index (highlighted) -->
+              <use href="#bp-corners-rag" x="410" y="70" width="140" height="60" stroke="#DC143C" stroke-width="2" vector-effect="non-scaling-stroke"/>
+              <line x1="480" y1="70" x2="480" y2="52" stroke="rgba(220,20,60,0.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="480" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.7">03 · </tspan><tspan fill="#F5F1ED" font-weight="600">FAISS VECTOR INDEX</tspan>
+              </text>
+              <line x1="480" y1="130" x2="480" y2="146" stroke="rgba(220,20,60,0.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="480" y="158" text-anchor="middle" fill="#DC143C" font-family="JetBrains Mono, monospace" font-size="10">COSINE SIMILARITY</text>
+
+              <!-- Connector 03 → 04 -->
+              <line x1="550" y1="94" x2="550" y2="106" stroke="#DC143C" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M550 100 H600" stroke="#DC143C" stroke-width="1.25" vector-effect="non-scaling-stroke"/>
+              <polygon points="607,100 597,96 597,104" fill="#DC143C"/>
+
+              <!-- NODE 04 — LLM Generation (terminal / output) -->
+              <use href="#bp-corners-rag" x="610" y="70" width="160" height="60" stroke="rgba(245,241,237,0.6)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <circle cx="690" cy="100" r="3" fill="#DC143C"/>
+              <line x1="690" y1="70" x2="690" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="690" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.7">04 · </tspan><tspan fill="#F5F1ED" font-weight="600">LLM GENERATION</tspan>
+              </text>
+              <line x1="690" y1="130" x2="690" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="690" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">GROUNDED CONTEXT</text>
+            </svg>
+            </div>
+            <p class="arch-caption">
+              The problem isn't "How do I call an LLM?" The problem is "How do I give it the right information at the right time?"<br><br>
+              Documents → chunks → embeddings → vector search → relevant context → generation<br><br>
+              <strong>The goal isn't to make the model know everything. It's to make it know what it needs.</strong>
+            </p>
+            <div class="arch-titleblock">
+              <span>FIG. 01 — RAG RETRIEVAL PIPELINE</span>
+              <span>SCALE: N.T.S. · REV: A</span>
+            </div>
+          </div>
+
+          <!-- State 2: Real-time Assessment Engine -->
+          <div class="arch-view" id="arch-realtime" role="tabpanel">
+            <div class="arch-svg-wrap">
+            <svg class="arch-svg" viewBox="0 0 800 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <symbol id="bp-corners-rt" viewBox="0 0 140 60">
+                  <path d="M0,14 L0,0 L14,0" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M126,0 L140,0 L140,14" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M140,46 L140,60 L126,60" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M14,60 L0,60 L0,46" fill="none" vector-effect="non-scaling-stroke"/>
+                </symbol>
+              </defs>
+
+              <!-- NODE 01 — Client Candidate -->
+              <use href="#bp-corners-rt" x="30" y="70" width="140" height="60" stroke="rgba(245,241,237,0.5)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <line x1="100" y1="70" x2="100" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="100" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.6">01 · </tspan><tspan fill="#F5F1ED">CLIENT CANDIDATE</tspan>
+              </text>
+              <line x1="100" y1="130" x2="100" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="100" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">LIVE WEB APP</text>
+
+              <!-- Connector 01 → 02 -->
+              <line x1="170" y1="94" x2="170" y2="106" stroke="rgba(245,241,237,0.3)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M170 100 H230" stroke="rgba(245,241,237,0.3)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <polygon points="237,100 227,96 227,104" fill="rgba(245,241,237,0.3)"/>
+
+              <!-- NODE 02 — Sync & Heartbeat -->
+              <use href="#bp-corners-rt" x="240" y="70" width="150" height="60" stroke="rgba(245,241,237,0.5)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <line x1="315" y1="70" x2="315" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="315" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.6">02 · </tspan><tspan fill="#F5F1ED">SYNC &amp; HEARTBEAT</tspan>
+              </text>
+              <line x1="315" y1="130" x2="315" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="315" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">WEBSOCKET / POLLING</text>
+
+              <!-- Connector 02 → 03 (crimson — leads into highlighted) -->
+              <line x1="390" y1="94" x2="390" y2="106" stroke="#DC143C" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M390 100 H450" stroke="#DC143C" stroke-width="1.25" vector-effect="non-scaling-stroke"/>
+              <polygon points="457,100 447,96 447,104" fill="#DC143C"/>
+
+              <!-- NODE 03 — Python Backend (highlighted) -->
+              <use href="#bp-corners-rt" x="460" y="70" width="150" height="60" stroke="#DC143C" stroke-width="2" vector-effect="non-scaling-stroke"/>
+              <line x1="535" y1="70" x2="535" y2="52" stroke="rgba(220,20,60,0.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="535" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.7">03 · </tspan><tspan fill="#F5F1ED" font-weight="600">PYTHON BACKEND</tspan>
+              </text>
+              <line x1="535" y1="130" x2="535" y2="146" stroke="rgba(220,20,60,0.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="535" y="158" text-anchor="middle" fill="#DC143C" font-family="JetBrains Mono, monospace" font-size="10">TIMER LOGIC + VALIDATION</text>
+
+              <!-- Connector 03 → 04 -->
+              <line x1="610" y1="94" x2="610" y2="106" stroke="#DC143C" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M610 100 H660" stroke="#DC143C" stroke-width="1.25" vector-effect="non-scaling-stroke"/>
+              <polygon points="667,100 657,96 657,104" fill="#DC143C"/>
+
+              <!-- NODE 04 — Auto-Submit (terminal / output) -->
+              <use href="#bp-corners-rt" x="670" y="70" width="110" height="60" stroke="rgba(245,241,237,0.6)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <circle cx="725" cy="100" r="3" fill="#DC143C"/>
+              <line x1="725" y1="70" x2="725" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="725" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.7">04 · </tspan><tspan fill="#F5F1ED" font-weight="600">AUTO-SUBMIT</tspan>
+              </text>
+              <line x1="725" y1="130" x2="725" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="725" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">DB PERSISTENCE</text>
+            </svg>
+            </div>
+            <p class="arch-caption">
+              <strong>When the timer reaches zero, somebody has to be right.</strong><br><br>
+              A countdown displayed in the browser is not enough to guarantee assessment integrity. The backend needs to know what time it is, what state the candidate was in, whether the connection disappeared, and whether the attempt should be submitted.
+            </p>
+            <div class="arch-titleblock">
+              <span>FIG. 02 — REAL-TIME ASSESSMENT ENGINE</span>
+              <span>SCALE: N.T.S. · REV: A</span>
+            </div>
+          </div>
+
+          <!-- State 3: AI Chat Proxy Pattern -->
+          <div class="arch-view" id="arch-yutsumi" role="tabpanel">
+            <div class="arch-svg-wrap">
+            <svg class="arch-svg" viewBox="0 0 800 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <symbol id="bp-corners-yt" viewBox="0 0 140 60">
+                  <path d="M0,14 L0,0 L14,0" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M126,0 L140,0 L140,14" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M140,46 L140,60 L126,60" fill="none" vector-effect="non-scaling-stroke"/>
+                  <path d="M14,60 L0,60 L0,46" fill="none" vector-effect="non-scaling-stroke"/>
+                </symbol>
+              </defs>
+
+              <!-- NODE 01 — Frontend Client -->
+              <use href="#bp-corners-yt" x="30" y="70" width="140" height="60" stroke="rgba(245,241,237,0.5)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <line x1="100" y1="70" x2="100" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="100" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.6">01 · </tspan><tspan fill="#F5F1ED">FRONTEND CLIENT</tspan>
+              </text>
+              <line x1="100" y1="130" x2="100" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="100" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">POST /API/CHAT</text>
+
+              <!-- Connector 01 → 02 -->
+              <line x1="170" y1="94" x2="170" y2="106" stroke="rgba(245,241,237,0.3)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M170 100 H240" stroke="rgba(245,241,237,0.3)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <polygon points="247,100 237,96 237,104" fill="rgba(245,241,237,0.3)"/>
+
+              <!-- NODE 02 — Express Proxy Server -->
+              <use href="#bp-corners-yt" x="250" y="70" width="160" height="60" stroke="rgba(245,241,237,0.5)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <line x1="330" y1="70" x2="330" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="330" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.6">02 · </tspan><tspan fill="#F5F1ED">EXPRESS PROXY SERVER</tspan>
+              </text>
+              <line x1="330" y1="130" x2="330" y2="146" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="330" y="158" text-anchor="middle" fill="#9A9590" font-family="JetBrains Mono, monospace" font-size="10">SYSTEM PROMPT + KB GUARD</text>
+
+              <!-- Connector 02 → 03 (crimson — leads into highlighted) -->
+              <line x1="410" y1="94" x2="410" y2="106" stroke="#DC143C" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M410 100 H480" stroke="#DC143C" stroke-width="1.25" vector-effect="non-scaling-stroke"/>
+              <polygon points="487,100 477,96 477,104" fill="#DC143C"/>
+
+              <!-- NODE 03 — Groq Cloud API (highlighted) -->
+              <use href="#bp-corners-yt" x="490" y="70" width="150" height="60" stroke="#DC143C" stroke-width="2" vector-effect="non-scaling-stroke"/>
+              <line x1="565" y1="70" x2="565" y2="52" stroke="rgba(220,20,60,0.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="565" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.7">03 · </tspan><tspan fill="#F5F1ED" font-weight="600">GROQ CLOUD API</tspan>
+              </text>
+              <line x1="565" y1="130" x2="565" y2="146" stroke="rgba(220,20,60,0.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="565" y="158" text-anchor="middle" fill="#DC143C" font-family="JetBrains Mono, monospace" font-size="10">LLAMA 3.1 8B INSTANT</text>
+
+              <!-- Connector 03 → 04 -->
+              <line x1="640" y1="94" x2="640" y2="106" stroke="#DC143C" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <path d="M640 100 H700" stroke="#DC143C" stroke-width="1.25" vector-effect="non-scaling-stroke"/>
+              <polygon points="707,100 697,96 697,104" fill="#DC143C"/>
+
+              <!-- NODE 04 — JSON (terminal / output, no sub-label) -->
+              <use href="#bp-corners-yt" x="710" y="70" width="80" height="60" stroke="rgba(245,241,237,0.6)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+              <circle cx="750" cy="100" r="3" fill="#DC143C"/>
+              <line x1="750" y1="70" x2="750" y2="52" stroke="rgba(245,241,237,0.25)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+              <text x="750" y="46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.04em">
+                <tspan fill="#DC143C" opacity="0.7">04 · </tspan><tspan fill="#F5F1ED" font-weight="600">JSON</tspan>
+              </text>
+            </svg>
+            </div>
+            <p class="arch-caption">
+              <strong>Never trust the browser with the keys.</strong><br><br>
+              The frontend shouldn't know secrets it doesn't need. Requests pass through a backend layer where authentication, prompts, knowledge constraints and provider communication can be controlled.
+            </p>
+            <div class="arch-titleblock">
+              <span>FIG. 03 — AI CHAT PROXY PATTERN</span>
+              <span>SCALE: N.T.S. · REV: A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ SECTION 07 · SKILLS (/stack) ══════ -->
+    <section id="skills" aria-label="Technical Stack">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-path">/stack</span>
+          <h2 class="section-heading section-heading--right">Tools are tools. Knowing when to use them is the skill.</h2>
+          <p class="section-sub">I don't collect technologies for the sake of collecting them. I usually start with the problem, then choose the simplest stack that lets me solve it properly.</p>
+        </div>
+        <div class="skills-grid stagger">
+          <div class="skill-group">
+            <div class="skill-group-title">
+              <span>I reach for these often</span>
+              <span>[Core]</span>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">FastAPI</span>
+              <span class="skill-pill">REST APIs</span>
+              <span class="skill-pill">SQL</span>
+              <span class="skill-pill">Git</span>
+              <span class="skill-pill">Linux</span>
+              <span class="skill-pill">React</span>
+              <span class="skill-pill">Node.js</span>
+              <span class="skill-pill">RAG</span>
+              <span class="skill-pill">LLM APIs</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">
+              <span>I've built with</span>
+              <span>[Exp]</span>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">Next.js</span>
+              <span class="skill-pill">MongoDB</span>
+              <span class="skill-pill">Firebase</span>
+              <span class="skill-pill">Kotlin</span>
+              <span class="skill-pill">Docker</span>
+              <span class="skill-pill">FAISS</span>
+              <span class="skill-pill">LangChain</span>
+              <span class="skill-pill">PostgreSQL</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">
+              <span>Currently exploring</span>
+              <span>[Next]</span>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill">AI Agents</span>
+              <span class="skill-pill">System Design</span>
+              <span class="skill-pill">Event-driven architecture</span>
+              <span class="skill-pill">LLM optimization</span>
+              <span class="skill-pill">High-throughput systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE BAND 2: Engineering Concepts -->
+    <div class="marquee-band marquee-reverse" aria-hidden="true">
+      <div class="marquee-track marquee-track-reverse">
+        <span>System Design</span><span class="marquee-dot"></span><span>Vector Search</span><span class="marquee-dot"></span><span>LLM Pipelines</span><span class="marquee-dot"></span><span>Agent Workflows</span><span class="marquee-dot"></span><span>Real-Time APIs</span><span class="marquee-dot"></span><span>Concurrency</span><span class="marquee-dot"></span><span>Event Streaming</span><span class="marquee-dot"></span><span>Prompt Engineering</span><span class="marquee-dot"></span>
+        <span>System Design</span><span class="marquee-dot"></span><span>Vector Search</span><span class="marquee-dot"></span><span>LLM Pipelines</span><span class="marquee-dot"></span><span>Agent Workflows</span><span class="marquee-dot"></span><span>Real-Time APIs</span><span class="marquee-dot"></span><span>Concurrency</span><span class="marquee-dot"></span><span>Event Streaming</span><span class="marquee-dot"></span><span>Prompt Engineering</span><span class="marquee-dot"></span>
+      </div>
+    </div>
+
+    <!-- ══════ SECTION 08 · YUTSUMI ══════ -->
+    <section id="yutsumi" aria-label="AI Portfolio Assistant Section">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-path">/assistant</span>
+          <h2 class="section-heading">I built an AI that can talk about me.</h2>
+          <p class="section-sub">Because apparently a normal portfolio wasn't enough.</p>
+        </div>
+        <div class="yutsumi-section-card" data-reveal="scale-in">
+          <div>
+            <div class="yutsumi-badge">
+              <span>●</span>
+              <span>Active Agent · Llama 3.1 Powered</span>
+            </div>
+            <h3 class="yutsumi-title">Meet Yutsumi.</h3>
+            <p class="yutsumi-desc">
+              Yutsumi is my portfolio's AI assistant — but instead of pretending to know everything, it's intentionally constrained to information about my work, projects, experience and technical background.
+            </p>
+            <p class="yutsumi-desc">
+              You can ask it what I've built, how a project works, what technologies I've used, or whether I'd be a good fit for a particular kind of role.
+            </p>
+            <p class="yutsumi-desc" style="margin-bottom: 20px;">
+              It isn't here to replace my portfolio. It's here because building the portfolio assistant was itself part of the portfolio.
+            </p>
+            <button class="btn-primary" onclick="openYutsumi()">
+              Open Yutsumi Chat ↗
+            </button>
+          </div>
+
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
+              // Ask Yutsumi:
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="chip" style="text-align:left;" onclick="openYutsumi(); askChip(this);">"What project best represents Kamlesh's backend skills?"</button>
+              <button class="chip" style="text-align:left;" onclick="openYutsumi(); askChip(this);">"What did Kamlesh learn from deployment problems?"</button>
+              <button class="chip" style="text-align:left;" onclick="openYutsumi(); askChip(this);">"Explain his RAG project like I'm a recruiter."</button>
+              <button class="chip" style="text-align:left;" onclick="openYutsumi(); askChip(this);">"Would you hire this guy for a Python backend role?"</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ SECTION 09 · EXPERIENCE (/timeline) ══════ -->
+    <section id="experience" aria-label="Experience and Education Timeline">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-path">/timeline</span>
+          <h2 class="section-heading">Where the code became real</h2>
+        </div>
+        <div class="timeline" data-reveal="slide-left">
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-period">Dec 2025 – Present · Pune, India</div>
+            <h3 class="timeline-role">Software Development Intern</h3>
+            <div class="timeline-company">Nelumbus Technologies</div>
+            <p class="timeline-narrative">This is where building projects became different from building things for myself. I worked on an AI-powered assessment platform, dealing with backend logic, real-time assessment behavior, timers, automated submission and agent workflows.</p>
+            <p class="timeline-lesson">The interesting lesson wasn't a particular framework. It was learning that production systems don't care whether your code looked beautiful at 2 AM. They care whether it works when somebody actually depends on it.</p>
+            <ul class="timeline-bullets">
+              <li>Contributing to an AI-powered online assessment platform written in Python.</li>
+              <li>Engineering real-time assessment logic with countdown timers and automated submission.</li>
+              <li>Optimizing agent workflow pipelines, debugging live production issues, and tuning latency.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-period">Jan 2025 – Apr 2025 · Pune, India</div>
+            <h3 class="timeline-role">IT Support Specialist</h3>
+            <div class="timeline-company">Ajeenkya D.Y. Patil University (ADYPU)</div>
+            <p class="timeline-narrative">Before spending my days thinking about APIs and AI, I spent time dealing with the other side of technology: machines, networks, operating systems and users who just wanted their system to work.</p>
+            <p class="timeline-lesson">Supporting university infrastructure taught me something software projects sometimes hide: Technology is ultimately about people trying to get something done.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot edu" aria-hidden="true"></div>
+            <div class="timeline-period edu-period">Sep 2022 – Jun 2026 (Expected)</div>
+            <h3 class="timeline-role">B.Tech in Computer Science</h3>
+            <div class="timeline-company">Ajeenkya D.Y. Patil University (ADYPU), Pune · 7.51 CGPA</div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div style="margin-top: 40px;">
+          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Certifications</h3>
+          <div class="certs-grid stagger">
+            <div class="cert-card">
+              <div class="cert-icon" aria-hidden="true">☁️</div>
+              <div>
+                <div class="cert-name">AWS Solutions Architecture Job Simulation</div>
+                <div class="cert-issuer">Amazon Web Services · Forage</div>
+              </div>
+            </div>
+            <div class="cert-card">
+              <div class="cert-icon" aria-hidden="true">🐍</div>
+              <div>
+                <div class="cert-name">Python Coder Certification</div>
+                <div class="cert-issuer">Python Institute</div>
+              </div>
+            </div>
+            <div class="cert-card">
+              <div class="cert-icon" aria-hidden="true">📊</div>
+              <div>
+                <div class="cert-name">Data Visualisation: Empowering Business</div>
+                <div class="cert-issuer">Tata Group · Forage</div>
+              </div>
+            </div>
+            <div class="cert-card">
+              <div class="cert-icon" aria-hidden="true">⚙️</div>
+              <div>
+                <div class="cert-name">Software Engineering Job Simulation (×2)</div>
+                <div class="cert-issuer">Forage</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════ SECTION 10 · LEARNING ══════ -->
+    <section id="learning" aria-label="Things That Broke Me Technically">
+      <div class="container">
+        <div class="section-header--narrow reveal">
+          <span class="section-path">/learning</span>
+          <h2 class="section-heading section-heading--right">Things That Broke Me (Technically)</h2>
+          <p class="section-sub">Not from tutorials. From actually building things.</p>
+        </div>
+        <div class="learning-grid stagger">
+          <div class="learning-card">
+            <div class="learning-code">401 Unauthorized</div>
+            <p class="learning-desc">Learned that having authentication code isn't the same as having a working session lifecycle.</p>
+          </div>
+          <div class="learning-card">
+            <div class="learning-code">"Works Locally"</div>
+            <p class="learning-desc">Deployment introduced a completely different class of problems — runtime versions, native modules, environment variables and build configuration.</p>
+          </div>
+          <div class="learning-card">
+            <div class="learning-code">The Missing Column</div>
+            <p class="learning-desc">A database schema and application code can disagree very confidently.</p>
+          </div>
+          <div class="learning-card">
+            <div class="learning-code">The Race Condition</div>
+            <p class="learning-desc">Two things happening at the same time is easy to write. It's much harder to reason about.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════ SECTION 11 · NEXT ══════ -->
+    <section id="next" aria-label="What I'm Looking For">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-path">/next</span>
+          <h2 class="section-heading">What's next?</h2>
+          <div class="next-text">
+            <p>I'm looking for a team where I can spend less time proving that I can code and more time learning how good software is actually engineered.</p>
+            <p>I'm particularly interested in Python backend engineering, AI engineering, LLM applications and systems where reliability matters.</p>
+            <p>I'm early in my career, but I'm not looking for a place where I can stay comfortable.</p>
+            <p><strong>Give me a difficult problem, a codebase I don't understand yet, and enough time to figure it out.</strong></p>
+            <p>That's usually where I do my best work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════ SECTION 12 · CONTACT (/contact) ══════ -->
+    <section id="contact" aria-label="Contact Information">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-path">/contact</span>
+          <h2 class="section-heading">Have a problem worth building?</h2>
+          <p class="section-sub">If you're building something interesting, hiring for a backend/AI role, or simply want to talk engineering, I'd love to hear about it. You don't need a perfectly written message. Tell me what you're building. I'll probably ask how it works.</p>
+        </div>
+        <div class="contact-grid" data-reveal="slide-right">
+          <div class="contact-left reveal">
+            <div class="contact-links">
+              <div class="contact-link" onclick="copyEmail()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyEmail()}" role="button" tabindex="0" aria-label="Copy email address to clipboard">
+                <div class="contact-link-icon">✉</div>
+                <span id="email-label">kamleshsharadpawar@gmail.com</span>
+                <span class="copy-hint">click to copy</span>
+              </div>
+              <a href="https://github.com/kamlesh9876" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <div class="contact-link-icon">gh</div>
+                <span>Find me on GitHub →</span>
+              </a>
+              <a href="https://www.linkedin.com/in/kamlesh-pawar-softwaredev/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <div class="contact-link-icon">in</div>
+                <span>Connect on LinkedIn →</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-card-cta reveal">
+            <h3>Email me directly</h3>
+            <p>The fastest way to get in touch. Click below to launch your mail client.</p>
+            <a href="mailto:kamleshsharadpawar@gmail.com?subject=Opportunity%20Inquiry%20for%20Kamlesh%20Pawar&body=Hi%20Kamlesh,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding..." class="btn-primary" style="display:inline-flex;">
+              Email me →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-name">Kamlesh Pawar</div>
+        <div class="footer-built">Python Backend · AI · Systems</div>
+        <div class="footer-tagline">Built with curiosity, too many Git commits, and probably one more bug than expected.</div>
+      </div>
+      <div class="footer-right">© 2026 Kamlesh Pawar</div>
+    </div>
+  </footer>
+
+  <!-- ══════ SECTION 05b · PROJECT CASE STUDY MODAL — populated by script.js ══════ -->
+  <div class="case-modal" id="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-modal-title" hidden>
+    <div class="case-modal-backdrop" data-case-close></div>
+    <div class="case-modal-panel">
+      <button type="button" class="case-modal-close" data-case-close aria-label="Close case study">×</button>
+      <div class="case-modal-scroll">
+        <div class="case-modal-head">
+          <span class="case-modal-num" id="case-modal-num" aria-hidden="true">01</span>
+          <div>
+            <h3 class="case-modal-title" id="case-modal-title"></h3>
+            <span class="case-modal-badge" id="case-modal-badge"></span>
+          </div>
+        </div>
+        <p class="case-modal-question" id="case-modal-question"></p>
+        <div class="case-modal-grid">
+          <div class="case-modal-main" id="case-modal-main"></div>
+          <aside class="case-modal-side" id="case-modal-side"></aside>
+        </div>
+        <div class="case-modal-actions" id="case-modal-actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ SECTION 13 · CHAT ══════ -->
+  <button id="chat-toggle" aria-label="Toggle Yutsumi AI Chat" aria-expanded="false">
+    <svg class="icon-chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <div id="chat-window" role="dialog" aria-label="Yutsumi AI Chat Window">
+    <div class="chat-header">
+      <div class="chat-avatar">Y</div>
+      <div>
+        <div class="chat-header-name">Yutsumi</div>
+        <div class="chat-header-sub">Portfolio AI Assistant</div>
+      </div>
+      <button class="chat-reset-btn" onclick="resetChat()" aria-label="Reset chat conversation" title="Reset conversation">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+        </svg>
+      </button>
+      <button class="chat-close-btn" onclick="toggleChat()" aria-label="Close chat window">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages" aria-live="polite">
+      <div class="msg bot">
+        <div class="msg-bubble">Ask me about what Kamlesh has built, how he thinks, or whether he'd be a good fit for your team.</div>
+        <div class="msg-time">just now</div>
+      </div>
+    </div>
+
+    <div class="chat-suggestions" id="chat-suggestions">
+      <span class="chip" onclick="askChip(this)">Summarize in 2 lines</span>
+      <span class="chip" onclick="askChip(this)">What has he built?</span>
+      <span class="chip" onclick="askChip(this)">Why backend?</span>
+      <span class="chip" onclick="askChip(this)">Would you hire him?</span>
+    </div>
+
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about projects, stack, or backend..." autocomplete="off" aria-label="Chat input message" />
+      <button id="chat-send" aria-label="Send message">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js?v=20260819i"></script>
+</body>
+</html>

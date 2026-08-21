@@ -86,4 +86,7 @@ jspm_packages/
 ehthumbs.db
 Thumbs.db
 
+# Raw video sources (compressed web versions are committed instead)
+*.mov
+
 .vercel
