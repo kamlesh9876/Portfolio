@@ -546,6 +546,7 @@ function initCursorSpotlight() {
 // ══════ SECTION 01 · NAVBAR — initNavigation ══════
 function initNavigation() {
   const navbar = document.getElementById('navbar');
+  if (!navbar) return;
 
   // Dock scroll shadow
   window.addEventListener('scroll', () => {
@@ -968,15 +969,19 @@ async function initGitHubStats() {
 
 // ══════ SECTION 12 · CONTACT — copyEmail ══════
 function copyEmail() {
-  navigator.clipboard.writeText('kamleshsharadpawar@gmail.com').then(() => {
-    const label = document.getElementById('email-label');
+  const email = 'kamleshsharadpawar@gmail.com';
+  const label = document.getElementById('email-label');
+  const announce = () => {
     if (!label) return;
     const orig = label.textContent;
     label.textContent = 'Copied to clipboard!';
-    setTimeout(() => {
-      label.textContent = orig;
-    }, 2200);
-  });
+    setTimeout(() => { label.textContent = orig; }, 2200);
+  };
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(email).then(announce).catch(() => announce());
+  } else {
+    announce();
+  }
 }
 
 // ══════ SECTION 13 · CHAT — initChatbot & helpers ══════
@@ -1015,7 +1020,7 @@ function initChatbot() {
 
   if (input) {
     input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
+      if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing && e.keyCode !== 229) {
         e.preventDefault();
         sendMessage();
       }
